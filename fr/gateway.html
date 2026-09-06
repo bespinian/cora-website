@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8">
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "../assets/js/react-18.3.1.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "../assets/js/react-dom-18.3.1.js"};</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../assets/js/dc-runtime.js"></script>
+<script>
+/* The page body is rendered client-side, so the browser resolves the URL
+   fragment before the target exists and the deep link silently does nothing.
+   Re-apply it once the runtime mounts the target, then hold the position
+   until layout settles (late mounts, lazy images and web fonts all shift it).
+   scrollIntoView honours the scroll-margin-top that clears the sticky header. */
+(function () {
+  var id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  var deadline = Date.now() + 4000, last = NaN, stable = 0, done = false;
+  function release() { done = true; }
+  // never fight a user who has started scrolling on their own
+  ["wheel", "touchstart", "keydown", "pointerdown"].forEach(function (e) {
+    addEventListener(e, release, { once: true, passive: true });
+  });
+  function snap(el) {
+    try { el.scrollIntoView({ behavior: "instant", block: "start" }); }
+    catch (e) { el.scrollIntoView(true); }
+  }
+  function tick() {
+    if (done) return;
+    var el = document.getElementById(id);
+    if (el) {
+      var top = Math.round(el.getBoundingClientRect().top);
+      if (top === last && ++stable >= 6) return;
+      if (top !== last) { last = top; stable = 0; }
+      snap(el);
+    }
+    if (Date.now() < deadline) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  addEventListener("load", function () {
+    var el = document.getElementById(id);
+    if (el && !done) snap(el);
+  });
+})();
+</script>
+<script>
+/* The #contact form posts to Formspree over fetch, so a submit never leaves
+   the page. The body renders client-side, so the form does not exist when this
+   runs and the handler is delegated off the document - submit bubbles.
+   The same script serves all six pages that carry the form; every message it
+   prints comes from the data-cf-* attributes on the form itself. */
+(function () {
+  var SEL = "form[data-contact-form]";
+
+  function say(form, key, ok) {
+    var el = form.querySelector("[data-cf-status]");
+    if (!el) return;
+    el.textContent = form.getAttribute("data-cf-" + key) || "";
+    el.style.display = "block";
+    el.style.color = ok ? "#1a7f4b" : "#c02b23";
+  }
+
+  document.addEventListener("submit", function (ev) {
+    var form = ev.target;
+    if (!form || typeof form.matches !== "function" || !form.matches(SEL)) return;
+    ev.preventDefault();
+
+    /* "at least one of these" is the one rule the browser cannot check itself */
+    var group = form.querySelector("[data-cf-interest]");
+    if (group && !group.querySelector("input:checked")) {
+      say(form, "need-interest", false);
+      var first = group.querySelector("input");
+      if (first) first.focus();
+      return;
+    }
+
+    var btn = form.querySelector("button[type=submit]");
+    if (btn) btn.disabled = true;
+    say(form, "sending", true);
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    }).then(function (res) {
+      if (!res.ok) throw new Error("formspree: " + res.status);
+      var fields = form.querySelector("[data-cf-fields]");
+      if (fields) fields.style.display = "none";
+      say(form, "sent", true);
+      form.reset();
+    }).catch(function () {
+      if (btn) btn.disabled = false;
+      say(form, "error", false);
+    });
+  });
+})();
+</script>
+<title>Cora Gateway - gouvernez chaque LLM de votre parc</title>
+<meta name="description" content="Cora Gateway est le point d'accès gouverné unique pour chaque LLM de votre parc : règles, budgets, masquage des secrets et des données personnelles, et une piste d'audit complète vers votre SIEM.">
+<link rel="canonical" href="https://cora.swiss/fr/gateway.html">
+<link rel="alternate" hreflang="de" href="https://cora.swiss/gateway.html">
+<link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html">
+<link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/gateway.html">
+<link rel="alternate" hreflang="x-default" href="https://cora.swiss/gateway.html">
+<link rel="icon" type="image/svg+xml" href="../assets/img/cora-favicon.svg">
+<link rel="alternate icon" type="image/png" href="../assets/img/cora-apple-touch-icon.png">
+<link rel="apple-touch-icon" href="../assets/img/cora-apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cora">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:locale:alternate" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:url" content="https://cora.swiss/fr/gateway.html">
+<meta property="og:title" content="Cora Gateway - gouvernez chaque LLM de votre parc">
+<meta property="og:description" content="Cora Gateway est le point d'accès gouverné unique pour chaque LLM de votre parc : règles, budgets, masquage des secrets et des données personnelles, et une piste d'audit complète vers votre SIEM.">
+<meta property="og:image" content="https://cora.swiss/assets/img/cora-og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cora, la mascotte de l'agent de codage souverain suisse">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cora Gateway - gouvernez chaque LLM de votre parc">
+<meta name="twitter:description" content="Cora Gateway est le point d'accès gouverné unique pour chaque LLM de votre parc : règles, budgets, masquage des secrets et des données personnelles, et une piste d'audit complète vers votre SIEM.">
+<meta name="twitter:image" content="https://cora.swiss/assets/img/cora-og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cora.swiss/fr/gateway.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Cora",
+          "item": "https://cora.swiss/fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cora Gateway",
+          "item": "https://cora.swiss/fr/gateway.html"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cora.swiss/fr/gateway.html#software",
+      "name": "Cora Gateway",
+      "url": "https://cora.swiss/fr/gateway.html",
+      "description": "Cora Gateway est le point d'accès gouverné unique pour chaque LLM de votre parc : règles, budgets, masquage des secrets et des données personnelles, et une piste d'audit complète vers votre SIEM.",
+      "applicationCategory": "DeveloperApplication",
+      "image": "https://cora.swiss/assets/img/cora-og-image.jpg",
+      "publisher": {
+        "@id": "https://cora.swiss/#organization"
+      },
+      "inLanguage": "fr"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0a1024; font-family: 'Space Grotesk', Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #4aa8ff; text-decoration: none; }
+  a:hover { color: #8fcaff; }
+</style>
+<style>
+  /* ---- responsive + accessibility layer ---- */
+  html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 84px; }
+
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid #4aa8ff; outline-offset: 3px; border-radius: 4px;
+  }
+  main:focus { outline: none; }
+
+  .skip-link {
+    position: absolute; left: 16px; top: -64px; z-index: 100;
+    background: #2f9bff; color: #0a1024; font-weight: 600; font-size: 14px;
+    padding: 11px 18px; border-radius: 8px; transition: top .16s ease;
+  }
+  .skip-link:focus { top: 14px; }
+
+  .site-nav::-webkit-scrollbar { display: none; }
+
+  /* below this width the four nav links no longer fit beside the actions,
+     so they move to their own scrollable row instead of being clipped */
+  @media (max-width: 880px) {
+    .site-header-inner { flex-wrap: wrap !important; padding: 12px 20px !important; gap: 10px 14px !important; }
+    .site-nav {
+      order: 3; flex: 1 0 100% !important; margin: 0 !important;
+      overflow-x: auto !important; overflow-y: hidden !important;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      gap: 20px !important; padding-bottom: 2px;
+    }
+    .site-actions { margin-left: auto; }
+    [id] { scroll-margin-top: 108px; }
+  }
+
+  /* the model table collapses to one labelled card per model */
+  @media (max-width: 700px) {
+    .model-head { display: none !important; }
+    .model-row { display: block !important; padding: 18px 20px !important; }
+    .model-cell { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 5px 0; }
+    .model-cell::before {
+      content: attr(data-label); flex: 0 0 auto;
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+      letter-spacing: .12em; color: #6f83a5;
+    }
+    .model-cell-name { display: block; padding: 0 0 10px; }
+    .model-cell-name::before { content: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
+  /* ---- contact form (#contact on the home and product pages) ---- */
+  .cf-label {
+    display: block; margin: 0 0 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .14em; color: #6b7a97;
+  }
+  .cf-field {
+    width: 100%; display: block; margin: 0;
+    font-family: inherit; font-size: 15.5px; line-height: 1.45; color: #0a1024;
+    background: #fff; border: 1px solid #c9d3e3; border-radius: 9px;
+    padding: 12px 14px; transition: border-color .14s ease, box-shadow .14s ease;
+  }
+  .cf-field::placeholder { color: #9aa8c0; }
+  .cf-field:focus {
+    outline: none; border-color: #2f9bff;
+    box-shadow: 0 0 0 3px rgba(47, 155, 255, .22);
+  }
+  textarea.cf-field { resize: vertical; min-height: 96px; }
+
+  .cf-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .cf-choice {
+    display: flex; align-items: center; gap: 10px; cursor: pointer;
+    font-size: 15.5px; font-weight: 600; color: #0a1024;
+    background: #fff; border: 1px solid #c9d3e3; border-radius: 10px;
+    padding: 12px 14px; transition: border-color .14s ease, background .14s ease;
+  }
+  .cf-choice:hover { border-color: #9db6d8; }
+  .cf-choice input { width: 17px; height: 17px; margin: 0; accent-color: #2f9bff; flex: 0 0 auto; }
+  .cf-choice:has(input:checked) { border-color: #2f9bff; background: #eaf3ff; }
+  .cf-choice:focus-within { border-color: #2f9bff; box-shadow: 0 0 0 3px rgba(47, 155, 255, .22); }
+
+  .cf-submit {
+    font-family: inherit; font-size: 16px; font-weight: 600; color: #fff;
+    background: #0a1024; border: 0; border-radius: 10px;
+    padding: 15px 26px; cursor: pointer; justify-self: start;
+    transition: background .14s ease;
+  }
+  .cf-submit:hover { background: #1a244d; }
+  .cf-submit[disabled] { opacity: .55; cursor: progress; }
+</style>
+</helmet>
+
+<div style="background:#0a1024;color:#e8edf7;overflow-x:hidden">
+
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,16,36,.82);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1304px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:24px;flex-wrap:nowrap" class="site-header-inner">
+      <a href="./" style="display:flex;align-items:center;gap:11px;color:#e8edf7">
+        <svg width="26" height="26" sc-camel-view-box="0 0 32 32" style="display:block;flex:0 0 auto"><defs><linearGradient id="coraMark26" x1="3" y1="0" x2="29" y2="32" sc-camel-gradient-units="userSpaceOnUse"><stop stop-color="#2f9bff"></stop><stop offset="1" stop-color="#123a8f"></stop></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#coraMark26)"></rect><path d="M21.4 9.6A8.4 8.4 0 1 0 21.4 22.4" fill="none" stroke="#fff" stroke-width="3.8" stroke-linecap="round"></path><rect x="20.6" y="13.4" width="5.2" height="5.2" rx="1.4" fill="#f5b229"></rect></svg>
+        <span style="font-size:19px;font-weight:700;letter-spacing:-.02em">Cora</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale" style="display:flex;gap:22px;font-size:14px;color:#9fb0cd;margin:0 auto;min-width:0;overflow:hidden;white-space:nowrap">
+        <a href="code.html" style="color:#9fb0cd">Cora Code</a>
+        <a href="gateway.html" aria-current="page" style="color:#4aa8ff;font-weight:600">Cora Gateway</a>
+        <a href="sovereignty.html" style="color:#9fb0cd">Souveraineté</a>
+        <a href="sustainability.html" style="color:#9fb0cd">Durabilité</a>
+      </nav>
+      <div class="site-actions" style="display:flex;gap:12px;align-items:center;margin-left:auto;flex:0 0 auto">
+        <span style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;flex:0 0 auto">
+          <a href="../gateway.html" lang="de" sc-camel-href-lang="de" title="Diese Seite auf Deutsch" style="color:#9fb0cd">DE</a>
+          <span aria-hidden="true" style="color:#3d4d6b">/</span>
+          <a href="../en/gateway.html" lang="en" sc-camel-href-lang="en" title="This page in English" style="color:#9fb0cd">EN</a>
+          <span aria-hidden="true" style="color:#3d4d6b">/</span>
+          <span aria-current="true" style="color:#e8edf7;font-weight:700">FR</span>
+        </span>
+        <a href="#contact" style="font-size:14.5px;font-weight:600;color:#0a1024;background:#2f9bff;padding:9px 16px;border-radius:8px;white-space:nowrap;flex:0 0 auto">Essayer Cora</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <section style="position:relative;padding:clamp(52px,8vw,80px) clamp(20px,5vw,32px) clamp(44px,6vw,64px)">
+    <div style="position:absolute;inset:0;background:radial-gradient(800px 420px at 22% 10%, rgba(245,178,41,.14), transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.14em;color:#f5b229;margin-bottom:18px">CORA GATEWAY</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center">
+        <div>
+          <h1 style="font-size:clamp(32px,7vw,60px);line-height:1.03;letter-spacing:-.035em;font-weight:700;margin:0 0 20px;text-wrap:balance">Un point d'accès gouverné pour chaque modèle que votre entreprise utilise</h1>
+          <p style="font-size:clamp(17.5px,2.2vw,19.5px);line-height:1.55;color:#a9b8d3;max-width:620px;margin:0 0 32px;text-wrap:pretty">Cora Gateway s'intercale entre vos équipes et chaque LLM - les modèles à poids ouverts de Cora hébergés en Suisse, vos propres fine-tunes, et les fournisseurs externes là où les règles l'autorisent. Règles, budgets et audit en un seul endroit.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+            <a href="#contact" style="font-size:15.5px;font-weight:600;color:#0a1024;background:#f5b229;padding:14px 24px;border-radius:10px;white-space:nowrap;flex:0 0 auto">Essayer Cora</a>
+            <code style="font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:11px 14px;border-radius:8px;color:#cfe0f7">base_url = https://gw.acme.ch/v1</code>
+          </div>
+        </div>
+        <img src="../assets/img/cora-routing-requests-in-a-swiss-control-room.webp" width="900" height="900" alt="Cora aiguillant des flux de requêtes vers des portes de modèles" decoding="async" sc-camel-fetch-priority="high" style="display:block;width:100%;max-width:420px;height:auto;aspect-ratio:1/1;margin:0 auto;object-fit:cover;border-radius:18px">
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 32px 90px">
+    <div style="max-width:1240px;margin:0 auto;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:34px;background:rgba(255,255,255,.03)">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.05fr) auto minmax(0,1fr);gap:22px;align-items:center">
+        <div style="display:grid;gap:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f83a5">CONSOMMATEURS</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px;background:rgba(47,155,255,.08)">Cora Code (CLI &amp; IDE)</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px">Applications internes et copilotes</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px">Notebooks et jobs CI</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px">Plugins SaaS tiers</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;color:#6f83a5;font-size:20px">→</div>
+        <div style="border:1px solid rgba(245,178,41,.4);border-radius:14px;padding:24px;background:linear-gradient(180deg,rgba(245,178,41,.12),rgba(255,255,255,.02))">
+          <div style="font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px">Cora Gateway</div>
+          <div style="display:grid;gap:9px;font-size:14.5px;color:#cbd7ea">
+            <span>· Identité et résolution d'équipe (OIDC)</span>
+            <span>· Moteur de règles + listes blanches de modèles</span>
+            <span>· Masquage et inspection des prompts</span>
+            <span>· Quotas, budgets, limites de débit</span>
+            <span>· Routage, mise en cache, bascule</span>
+            <span>· Export d'audit vers le SIEM</span>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;color:#6f83a5;font-size:20px">→</div>
+        <div style="display:grid;gap:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6f83a5">MODÈLES</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px;background:rgba(47,155,255,.08)">Cora Large / Swiss / Fast · CH</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px">Vos fine-tunes · CH</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px">Clusters d'inférence on-premise</div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px;font-size:15px;color:#9fb0cd">Fournisseurs externes <span style="color:#f5b229">(soumis aux règles)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 32px 96px">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px">
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03)">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Fini le shadow AI</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">Une seule base URL pour toute l'entreprise. Bloquez la sortie directe vers les fournisseurs au niveau du proxy et chaque requête devient visible.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03)">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Des règles par équipe et par cas d'usage</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">Quels modèles, quelles classes de données, quelles régions - exprimé comme une politique versionnée, appliquée à chaque requête.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03)">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Des coûts que vous pouvez imputer</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">Dépense en tokens par équipe, par dépôt et par centre de coûts, avec des plafonds budgétaires stricts et une alerte avant la facture.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:14px">
+        <img src="../assets/img/cora-redacting-confidential-data.webp" width="400" height="400" alt="Cora masquant des secrets sur un document" loading="lazy" decoding="async" style="display:block;width:150px;height:150px;object-fit:cover;border-radius:10px">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Prévention des fuites de données</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">Les secrets, les identifiants de clients et les données personnelles sont détectés et masqués en périphérie, avec des jeux de règles par tenant.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03)">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Un audit qui satisfait la gestion des risques</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">Des enregistrements immuables du prompt, du modèle, de la décision de politique et de l'identité humaine - diffusés vers Splunk ou Sentinel.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:28px;background:rgba(255,255,255,.03)">
+        <h2 style="font-size:20px;margin:0 0 10px;letter-spacing:-.02em">Compatible sans réécriture</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#9fb0cd;margin:0">API compatible OpenAI&nbsp;: les SDK, agents et outils existants basculent en changeant une seule variable d'environnement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding:clamp(56px,9vw,96px) clamp(20px,5vw,32px);background:#f2f4f9;color:#0a1024">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:56px;align-items:center">
+      <div>
+        <h2 style="font-size:clamp(26px,4.6vw,40px);line-height:1.06;letter-spacing:-.03em;margin:0 0 14px;font-weight:700;text-wrap:balance">Placez un plan de contrôle devant vos usages de l'IA</h2>
+        <p style="font-size:clamp(16.5px,2vw,17.5px);color:#4d5c78;margin:0 0 28px;max-width:520px;line-height:1.55;text-wrap:pretty">Déployable comme tenant hébergé en Suisse ou comme chart Helm dans vos propres racks - y compris en air-gap.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+          <a href="code.html" style="font-size:16px;font-weight:600;color:#0a1024;border:1px solid #c4cddd;padding:15px 26px;border-radius:10px;white-space:nowrap;flex:0 0 auto">Voir Cora Code</a>
+        </div>
+        <img src="../assets/img/cora-at-a-dashboard-of-dials-and-gauges.webp" width="700" height="391" alt="Cora devant un tableau de cadrans et de jauges" loading="lazy" decoding="async" style="display:block;width:100%;max-width:320px;height:auto;aspect-ratio:1376/768;margin:36px 0 0;object-fit:cover;border-radius:14px">
+      </div>
+      <form action="https://formspree.io/f/xvkobjyb" method="post" data-contact-form="" data-cf-sending="Envoi en cours …" data-cf-sent="Merci - votre demande nous est parvenue. Nous répondons dans un délai d'un jour ouvrable." data-cf-error="Envoi impossible. Merci de réessayer, ou écrivez-nous via bespinian.io/en/contact." data-cf-need-interest="Merci de choisir au moins un produit." style="background:#fff;border:1px solid #dbe2ee;border-radius:16px;padding:clamp(22px,3.2vw,32px);box-shadow:0 18px 40px -28px rgba(10,16,36,.5)">
+        <input type="hidden" name="_subject" value="Cora - demande via cora.swiss">
+        <input type="hidden" name="Langue" value="Français">
+        <div data-cf-fields="" style="display:grid;gap:18px">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6b7a97;margin:0">DÉMARRER UNE DEMANDE</p>
+          <div>
+            <label class="cf-label" for="cf-name">NOM</label>
+            <input class="cf-field" id="cf-name" name="Nom" type="text" required="true" sc-camel-auto-complete="name" placeholder="Prénom et nom">
+          </div>
+          <div>
+            <label class="cf-label" for="cf-email">E-MAIL</label>
+            <input class="cf-field" id="cf-email" name="email" type="email" required="true" sc-camel-auto-complete="email" placeholder="vous@entreprise.ch">
+          </div>
+          <div>
+            <label class="cf-label" for="cf-company">ENTREPRISE <span style="letter-spacing:0;text-transform:none">(facultatif)</span></label>
+            <input class="cf-field" id="cf-company" name="Entreprise" type="text" sc-camel-auto-complete="organization" placeholder="Société ou service">
+          </div>
+          <fieldset class="cf-group" data-cf-interest="">
+            <legend class="cf-label">INTÉRÊT POUR</legend>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px">
+              <label class="cf-choice"><input type="checkbox" name="Intérêt" value="Cora Code" data-interest="code"><span>Cora Code</span></label>
+              <label class="cf-choice"><input type="checkbox" name="Intérêt" value="Cora Gateway" data-interest="gateway" sc-camel-default-checked="true"><span>Cora Gateway</span></label>
+            </div>
+          </fieldset>
+          <div>
+            <label class="cf-label" for="cf-message">MESSAGE <span style="letter-spacing:0;text-transform:none">(facultatif)</span></label>
+            <textarea class="cf-field" id="cf-message" name="message" rows="4" placeholder="Taille de l'équipe, stack, échéance - ce que nous devrions savoir d'emblée."></textarea>
+          </div>
+          <input type="text" name="_gotcha" tabindex="-1" aria-hidden="true" sc-camel-auto-complete="off" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;border:0;overflow:hidden;clip:rect(0 0 0 0)">
+          <button type="submit" class="cf-submit">Envoyer la demande</button>
+          <p style="margin:0;font-size:13.5px;line-height:1.55;color:#6b7a97">Nous utilisons vos coordonnées uniquement pour répondre à cette demande. Aucune transmission à des tiers.</p>
+        </div>
+        <p data-cf-status="" role="status" style="display:none;margin:18px 0 0;font-size:14.5px;line-height:1.5;font-weight:600"></p>
+      </form>
+    </div>
+  </section>
+
+  </main>
+
+  <footer style="background:#070c1c;padding:clamp(40px,7vw,56px) clamp(20px,5vw,32px) 40px;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px">
+          <svg width="24" height="24" sc-camel-view-box="0 0 32 32" style="display:block;flex:0 0 auto"><defs><linearGradient id="coraMark24" x1="3" y1="0" x2="29" y2="32" sc-camel-gradient-units="userSpaceOnUse"><stop stop-color="#2f9bff"></stop><stop offset="1" stop-color="#123a8f"></stop></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#coraMark24)"></rect><path d="M21.4 9.6A8.4 8.4 0 1 0 21.4 22.4" fill="none" stroke="#fff" stroke-width="3.8" stroke-linecap="round"></path><rect x="20.6" y="13.4" width="5.2" height="5.2" rx="1.4" fill="#f5b229"></rect></svg>
+          <span style="font-size:18px;font-weight:700;color:#e8edf7">Cora</span>
+        </div>
+        <p style="font-size:15px;color:#7c8fb0;margin:0;line-height:1.6;max-width:280px">Codage agentique souverain pour les entreprises suisses. Conçu à Berne par bespinian.</p>
+      </div>
+      <div style="display:grid;gap:10px;font-size:14.5px;color:#9fb0cd;align-content:start">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a5c7d">PRODUITS</span>
+        <a href="code.html" style="color:#9fb0cd">Cora Code</a><a href="gateway.html" style="color:#9fb0cd">Cora Gateway</a><a href="index.html#models" style="color:#9fb0cd">Modèles</a><a href="index.html#deploy" style="color:#9fb0cd">Déploiement</a>
+      </div>
+      <div style="display:grid;gap:10px;font-size:14.5px;color:#9fb0cd;align-content:start">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a5c7d">CONFIANCE</span>
+        <a href="index.html#security" style="color:#9fb0cd">Sécurité</a><a href="sovereignty.html" style="color:#9fb0cd">Souveraineté</a><a href="sustainability.html" style="color:#9fb0cd">Durabilité</a>
+      </div>
+      <div style="display:grid;gap:10px;font-size:14.5px;color:#9fb0cd;align-content:start">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a5c7d">ENTREPRISE</span>
+        <a href="./#story" style="color:#9fb0cd">L'histoire</a><a href="https://bespinian.io/en/about" style="color:#9fb0cd">À propos</a><a href="https://bespinian.io/en/about/jobs" style="color:#9fb0cd">Emplois</a><a href="./#contact" style="color:#9fb0cd">Contact</a><a href="https://bespinian.io/en/imprint" style="color:#9fb0cd">Mentions légales</a>
+      </div>
+    </div>
+    <div style="max-width:1240px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#4a5c7d;letter-spacing:.06em">
+      <span>© 2026 BESPINIAN · BERNE</span>
+      <span>TOUTE L'INFÉRENCE DANS CH-ZRH-1 / CH-GVA-1</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+
+
+
+</body></html>
