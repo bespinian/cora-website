@@ -4,8 +4,8 @@
   <url>
     <loc>https://cora.swiss/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -13,8 +13,8 @@
   <url>
     <loc>https://cora.swiss/en/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -22,8 +22,8 @@
   <url>
     <loc>https://cora.swiss/fr/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -31,8 +31,8 @@
   <url>
     <loc>https://cora.swiss/code.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/code.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/code.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/code.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -40,8 +40,8 @@
   <url>
     <loc>https://cora.swiss/en/code.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/code.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/code.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/code.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -49,8 +49,8 @@
   <url>
     <loc>https://cora.swiss/fr/code.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/code.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/code.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/code.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/code.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -58,8 +58,8 @@
   <url>
     <loc>https://cora.swiss/gateway.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/gateway.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/gateway.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/gateway.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -67,8 +67,8 @@
   <url>
     <loc>https://cora.swiss/en/gateway.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/gateway.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/gateway.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/gateway.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -76,8 +76,8 @@
   <url>
     <loc>https://cora.swiss/fr/gateway.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/gateway.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/gateway.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/gateway.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/gateway.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -85,8 +85,8 @@
   <url>
     <loc>https://cora.swiss/sovereignty.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sovereignty.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sovereignty.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -94,8 +94,8 @@
   <url>
     <loc>https://cora.swiss/en/sovereignty.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sovereignty.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sovereignty.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -103,8 +103,8 @@
   <url>
     <loc>https://cora.swiss/fr/sovereignty.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sovereignty.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sovereignty.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sovereignty.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sovereignty.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -112,8 +112,8 @@
   <url>
     <loc>https://cora.swiss/sustainability.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sustainability.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sustainability.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sustainability.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -121,8 +121,8 @@
   <url>
     <loc>https://cora.swiss/en/sustainability.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sustainability.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sustainability.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sustainability.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -130,8 +130,8 @@
   <url>
     <loc>https://cora.swiss/fr/sustainability.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/sustainability.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/sustainability.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/sustainability.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/sustainability.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -139,8 +139,8 @@
   <url>
     <loc>https://cora.swiss/story.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/story.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/story.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/story.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -148,8 +148,8 @@
   <url>
     <loc>https://cora.swiss/en/story.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/story.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/story.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/story.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -157,8 +157,8 @@
   <url>
     <loc>https://cora.swiss/fr/story.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://cora.swiss/story.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://cora.swiss/fr/story.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cora.swiss/en/story.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cora.swiss/story.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
