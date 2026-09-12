@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cora.swiss/sitemap.xml
+Sitemap: https://keera.ch/sitemap.xml

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg3"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <rect
+     width="32"
+     height="32"
+     fill="url(#a)"
+     rx="7"
+     id="rect2"
+     style="fill:#3273dc;fill-opacity:1"
+     x="0"
+     y="0" />
+  <rect
+     style="fill:none;stroke:#ffffff;stroke-width:2.37836;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect1"
+     width="12.463987"
+     height="13.145634"
+     x="9.6996841"
+     y="9.0470905"
+     rx="2.231781" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.37836;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect4-1-9"
+     width="0.045443136"
+     height="2.9816027"
+     x="13.770077"
+     y="-9.6996841"
+     rx="0"
+     ry="2.9816027"
+     transform="rotate(90)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5"
+     width="4.874516"
+     height="2.2144227"
+     x="5.9715381"
+     y="12.617783"
+     ry="0.6058327" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-8"
+     width="4.874516"
+     height="2.2144227"
+     x="5.9781041"
+     y="16.563927"
+     ry="0.6058327" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-2"
+     width="4.874516"
+     height="2.2144227"
+     x="21.015779"
+     y="12.480848"
+     ry="0.6058327" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-8-0"
+     width="4.874516"
+     height="2.2144227"
+     x="21.022345"
+     y="16.426992"
+     ry="0.6058327" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-2-7"
+     width="4.874516"
+     height="2.2144227"
+     x="-10.184073"
+     y="12.707819"
+     ry="0.6058327"
+     transform="rotate(-90)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-8-0-5"
+     width="4.874516"
+     height="2.2144227"
+     x="-10.177507"
+     y="16.653961"
+     ry="0.6058327"
+     transform="rotate(-90)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-2-7-2"
+     width="4.874516"
+     height="2.2144227"
+     x="-25.87664"
+     y="12.849625"
+     ry="0.6058327"
+     transform="rotate(-90)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:5.14759;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect5-8-0-5-8"
+     width="4.874516"
+     height="2.2144227"
+     x="-25.870073"
+     y="16.795769"
+     ry="0.6058327"
+     transform="rotate(-90)" />
+  <rect
+     style="fill:#f8ad00;fill-opacity:1;stroke:none;stroke-width:1.69129;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     id="rect6"
+     width="5.3963122"
+     height="5.4939609"
+     x="13.188878"
+     y="12.862535"
+     rx="0.92271662" />
+</svg>

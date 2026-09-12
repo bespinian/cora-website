@@ -1,9 +1,10 @@
-# Cora Website
+# Keera Website
 
 Eighteen hand-written static content pages plus `404.html`, served straight off
-GitHub Pages with no build step. The markup carries classes only; the whole design lives in one
-shared stylesheet, `assets/css/cora.css`, and the only JavaScript on the site is
-`assets/js/contact-form.js`, loaded by the nine pages that carry a form.
+GitHub Pages with no build step. The markup carries classes only; the whole
+design lives in one shared stylesheet, `assets/css/keera.css`, and the only
+JavaScript on the site is `assets/js/contact-form.js`, loaded by the nine pages
+that carry a form.
 
 Two things this repo used to be and must not become again: Claude Design decks
 (markup inside `<x-dc>` rendered client-side by React) and pages that style
@@ -26,16 +27,16 @@ The site was rebuilt to be read, not admired. Keep it that way:
   paragraph, it is two sections or it is cut.
 - **Simple language.** Short sentences, plain words, no stacked qualifiers.
   German uses _du_, English _you_, French _vous_.
-- **Cora stays.** The mascot and the comic artwork are the point of difference;
+- **Keera stays.** The mascot and the comic artwork are the point of difference;
   the flashiness around them was not. The home hero is the mascot with her gun
-  (`cora-mascot-with-her-gun.webp`, encoded from `badass2.png` in the sibling
-  `artwork/` folder outside this repo), the Cora Code hero is Cora at her laptop
-  (`cora-coding-on-a-laptop.webp`, from `laptop.png`), the Cora Gateway hero is
-  Cora striding through a lit gate (`cora-walking-through-a-gateway.webp`, from
-  `gate.png`), and every other page leads with one illustration of its own. All
-  three product heroes are cut-outs on transparent ground, so they sit in a bare
-  `.hero-art` figure; only artwork with its own background takes
-  `.hero-art--framed`.
+  (`keera-mascot-with-her-gun.webp`, encoded from `badass2.png` in the sibling
+  `artwork/` folder outside this repo), the Keera Code hero is Keera at her
+  laptop (`keera-coding-on-a-laptop.webp`, from `laptop.png`), the Keera Gateway
+  hero is Keera striding through a lit gate
+  (`keera-walking-through-a-gateway.webp`, from `gate.png`), and every other
+  page leads with one illustration of its own. All three product heroes are
+  cut-outs on transparent ground, so they sit in a bare `.hero-art` figure; only
+  artwork with its own background takes `.hero-art--framed`.
 - **Let the visuals carry it.** Now that the copy is short, a diagram or an
   illustration is the faster read, so each product page gets one diagram and
   two images rather than another paragraph. A diagram has to say something the
@@ -59,14 +60,14 @@ existing section, not in a grid of their own.
 - `index.html` - home: hero, the two products, three sovereignty facts, three
   ways to run it as quiet cards, the story teaser, the form.
 
-Cora Gateway is the more important of the two products and comes first wherever
+Keera Gateway is the more important of the two products and comes first wherever
 they are listed together: the header nav, the footer row, the two home cards,
 the interest checkboxes in the form, the sitemap, and the sentence that opens
 the home page. Keep new lists in that order.
-- `gateway.html` - Cora Gateway: hero, the request-flow diagram
+- `gateway.html` - Keera Gateway: hero, the request-flow diagram
   (`#architecture`), the web UI shot, four things it controls (beside the
   checkpoint-gate vignette), the form.
-- `code.html` - Cora Code: hero, what it is as a four-layer stack (`#what`),
+- `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
   illustration), the form.
 - `sovereignty.html` - the layer table, three questions, the open-source stack.
@@ -98,7 +99,7 @@ single page and it is built differently from the eighteen:
   not found · Page introuvable") so no language is privileged in the prose.
 - Header, footer and nav labels stay German, matching `x-default`. There is no
   form, so it does not load `contact-form.js`. It uses
-  `cora-mascot-full-figure.webp` and adds no CSS of its own.
+  `keera-mascot-full-figure.webp` and adds no CSS of its own.
 
 ## Languages
 
@@ -178,8 +179,8 @@ both schemes - and all `aria-hidden`, because the name they belong to sits right
 next to them.
 
 - **The two products**, in the accent: an arrow through a gate line and out
-  again for Cora Gateway - one endpoint everything passes through - and a
-  terminal prompt (`>` and a line) for Cora Code. Each appears twice per language:
+  again for Keera Gateway - one endpoint everything passes through - and a
+  terminal prompt (`>` and a line) for Keera Code. Each appears twice per language:
   above the `<h3>` on the home-page product card, and above the eyebrow in that
   product's hero.
 - **The three deployment options** on `index.html#deploy`, in `--muted` because
@@ -192,32 +193,33 @@ identical. Nothing else gets an icon - no nav item, no section heading, no fact
 cell. The set reads as meaningful only while it is exactly these five things.
 
 The two brand marks in `#omnivor` on the sustainability pages are **not** part
-of that set and must not be drawn into it: `.logo--cora` and `.logo--omnivor`
+of that set and must not be drawn into it: `.logo--keera` and `.logo--omnivor`
 are filled marks on a 32 viewBox, each in its own side's colour (`--accent` and
 `--omnivor`) rather than the one accent. They are built from the same two parts
-on purpose - Cora's C open with the square at its mouth, the same square sealed
-inside Omnivor's closed O - so the shapes make the section's argument before the
-copy does. Cora's is the header wordmark's own geometry; keep it that way.
+on purpose - Keera's K open with the square in its throat, the same square
+sealed inside Omnivor's closed O - so the shapes make the section's argument
+before the copy does. Keera's is the header wordmark's own geometry; keep it
+that way.
 
 They also sit differently from the icon set: each one is **inside** its `<h3>`,
 to the left of the name, and the heading carries `.logo-head` to lay the two out
 as one line. That is why they are 26px against the icon set's 30px - a mark
 beside 18px type wants less height than one standing above it.
 
-## Cora's story
+## Keera's story
 
 The story has its own page, `story.html`, and a short teaser on the home pages.
 
-**Cora is the protagonist, not the closing argument.** She is the subject of the
-arc: powerless witness, then traveller, then witness again, then builder. Never
-rewrite the page so she arrives only at the end; that was the first draft's
-mistake.
+**Keera is the protagonist, not the closing argument.** She is the subject of
+the arc: powerless witness, then traveller, then witness again, then builder.
+Never rewrite the page so she arrives only at the end; that was the first
+draft's mistake.
 
 She has a sidekick: **Cache**, a male cat who lives in the server room. Cats
 notice what nobody else notices and stare at it until somebody follows their
 eyes, so Cache _is_ the audit trail, in fur: he stares at the wall in panel 05
 and someone just scratches his ears, and in panel 22 the staring finally has
-something to point at - a ledger Cora built for him. Keep that pairing intact,
+something to point at - a ledger Keera built for him. Keep that pairing intact,
 it is the story's main payoff. He is male in all three languages; the French
 copy calls him _un chat_ and never _une chatte_, which carries vulgar slang. An
 earlier draft used a Swiss marmot called Murmeli; it read as folklore rather
@@ -229,8 +231,8 @@ crate in a doorway, the glass tower, a key mounted on that facade like corporate
 sculpture. Its cast portrait is its headquarters, not a suited figure. Each
 language carries it with a noun whose pronouns then follow: German _der Konzern_
 (_er/ihn/sein_), French _un groupe_ (_il/lui/son_ - never feminine _elle_, which
-would collide with Cora), English a plain _it/its_. Omnivor is invented, and the
-mono footnote that says so out loud is what stops the section reading as an
+would collide with Keera), English a plain _it/its_. Omnivor is invented, and
+the mono footnote that says so out loud is what stops the section reading as an
 accusation against a real company - it appears on `story.html`, on the home
 teaser and in `sustainability.html` alike, and uses the same noun.
 
@@ -243,8 +245,8 @@ The four acts, each a `<section class="act">` with an eyebrow, a headline and a
 one-sentence lede:
 
 - **Act I - the gift** (01-05). The server room; Omnivor arrives with a free
-  plugin that genuinely works; Cora watches the relief with nowhere to put
-  herself; Cache stares at the cable and only Cora follows his eyes.
+  plugin that genuinely works; Keera watches the relief with nowhere to put
+  herself; Cache stares at the cable and only Keera follows his eyes.
 - **Act II - the quiet invasion** (06-12). Page 40 of the terms, over the ocean,
   the windowless hall with a Swiss cross in one rack, a web form instead of a
   room, a map that changed colour, and the price tripling on a door with no lock.
@@ -267,11 +269,11 @@ panel is a `<figure class="panel">` holding the artwork slot and a
 The story is carried by those captions - keep them reading as a graphic novel,
 concrete and in sequence, not as feature bullets, and keep them short.
 
-Panel 01 is the only slot with real artwork (`cora-story-01.webp`). The other 23
-are `<div class="ph">` boxes showing nothing but `PANEL NN`, because the art
+Panel 01 is the only slot with real artwork (`keera-story-01.webp`). The other
+23 are `<div class="ph">` boxes showing nothing but `PANEL NN`, because the art
 brief is production information and does not belong on a public page. Each
 placeholder is preceded by an HTML comment holding the exact `<img>` to paste in
-its place (`assets/img/cora-story-NN.webp`, 1200×900 for pair panels, 1600×900
+its place (`assets/img/keera-story-NN.webp`, 1200×900 for pair panels, 1600×900
 for splashes, `loading="lazy"`, the brief pre-filled as `alt`) and the brief
 again as a record. Replace the whole placeholder `<div>`, keep the numbering,
 and collapse the comment to `<!-- PANEL NN - Brief: ... -->`. Those sizes are a
@@ -286,14 +288,14 @@ region names, in panel 20 or anywhere else.
 The home teaser stays a teaser: eyebrow, headline, one paragraph that sketches
 the arc and names Omnivor, a quiet button to `story.html`, and the footnote.
 Nothing else - no villain strip, no second paragraph. Its headline introduces
-**her**, not the product - _Cora gibt es aus einem Grund_ / _Cora exists for a
-reason_ / _Si Cora existe, c'est pour une raison_ - and the paragraph then
+**her**, not the product - _Keera gibt es aus einem Grund_ / _Keera exists for a
+reason_ / _Si Keera existe, c'est pour une raison_ - and the paragraph then
 opens on _she_, so the reader meets a character before a feature. An earlier
-draft headlined it _Cora wurde gegen etwas gebaut_ ("Cora was built against
+draft headlined it _Keera wurde gegen etwas gebaut_ ("Keera was built against
 something"), which framed her as a product decision; don't go back to that.
 
 `sustainability.html` picks the thread up in its own `#omnivor` section: the
-take-until-nothing-is-left card against Cora's same-grid-as-the-country card -
+take-until-nothing-is-left card against Keera's same-grid-as-the-country card -
 each name preceded by its own brand mark, red and blue - the footnote, and a
 link to the story. The refusal of the climate-neutral claim
 has to survive any rewrite, there and in the story's _what we do not claim_
@@ -302,7 +304,7 @@ section.
 ## Models
 
 `#models` on `code.html` runs one table - `MODELL / KONTEXT / IDEAL FÜR`, three
-Cora models and the customer's own fine-tune - followed by one sentence naming
+Keera models and the customer's own fine-tune - followed by one sentence naming
 the upstreams (Qwen3-Coder, Apertus) and the Apache-2.0 licence, and one mono
 footnote about hosted providers.
 
@@ -328,7 +330,7 @@ is rewritten. Re-shooting the screen means re-reading both
 paragraphs. The caption says out loud that the figures come from a demo instance,
 which is what stops `0.00 CHF` reading as a claim.
 
-Only the dark shot ships (`cora-gateway-sessions-dark.webp`, 1920×952). The
+Only the dark shot ships (`keera-gateway-sessions-dark.webp`, 1920×952). The
 light one and the two-radio no-JS toggle that switched between them are gone;
 two dashboards were more chrome than the section could pay for. Below 700px the
 frame scrolls sideways rather than shrinking - a 1920px dashboard scaled into a
@@ -356,9 +358,9 @@ field names, because Formspree puts them straight into the notification mail -
 `Name`/`Unternehmen`/`Interesse`, `Name`/`Company`/`Interest`,
 `Nom`/`Entreprise`/`Intérêt`; `email` and `message` stay lowercase English in
 all three. Interest is a checkbox group rather than radios so one visitor can
-ask about Cora Gateway and Cora Code at once. On `code.html` and `gateway.html`
-the page's own product is ticked already - a plain `checked` the visitor can
-untick.
+ask about Keera Gateway and Keera Code at once. On `code.html` and
+`gateway.html` the page's own product is ticked already - a plain `checked` the
+visitor can untick.
 
 `assets/js/contact-form.js` takes the submit over. It is delegated off
 `document`, posts with `fetch` and `Accept: application/json` so the visitor
@@ -372,9 +374,9 @@ it checks itself; everything else is native constraint validation.
 
 ## The stylesheet
 
-`assets/css/cora.css` is the whole design layer, in this order: four `@font-face`
-rules, the tokens, the base elements, then the components. Read it before adding
-a class - most sections need nothing new.
+`assets/css/keera.css` is the whole design layer, in this order: four
+`@font-face` rules, the tokens, the base elements, then the components. Read it
+before adding a class - most sections need nothing new.
 
 - **Tokens** on `:root`: twelve colours - `--bg`, `--surface`, `--card`,
   `--ink`, `--muted`, `--line`, `--accent`, `--accent-hover`, `--btn-ink`,
@@ -404,7 +406,7 @@ a class - most sections need nothing new.
 - **Diagrams**: `.flow` is the gateway's request path - three `.flow-stage`
   boxes chained by two `.flow-arrow`s, the middle one `--main` in the accent
   with an ordered `.flow-steps` list, and `.flow-branch` hanging under it for
-  the audit log. `.stack` is what Cora Code is, seen in cross-section: four
+  the audit log. `.stack` is what Keera Code is, seen in cross-section: four
   `.stack-layer` rows (the API, the models, the inference server, the place)
   sharing their borders inside one rounded block, each a `.stack-label` beside
   a `.stack-text`, with `.stack-layer--api` carrying an inset accent bar
@@ -454,7 +456,7 @@ resolves `#contact` against a target that already exists.
 
 ## Assets
 
-- `assets/css/cora.css` - the stylesheet. One file, no imports.
+- `assets/css/keera.css` - the stylesheet. One file, no imports.
 - `assets/js/contact-form.js` - the form handler, loaded `defer` by the nine
   pages with a form. Nothing else on the site runs JavaScript, and no page needs
   a runtime: the React/`dc-runtime.js` era cost every page ~210 KB before
@@ -463,7 +465,7 @@ resolves `#contact` against a target that already exists.
   `latin-ext` only. Every head preloads the two `latin` cuts
   (`<link rel="preload" as="font" type="font/woff2" crossorigin>`, before the
   stylesheet link): the browser would otherwise only discover them after parsing
-  `cora.css`, a round trip that delays first paint. `crossorigin` is required
+  `keera.css`, a round trip that delays first paint. `crossorigin` is required
   even though the files are same-origin - fonts are fetched in anonymous CORS
   mode, and without it the preload is thrown away and fetched a second time. The
   two `latin-ext` cuts are deliberately **not** preloaded: German umlauts and
@@ -475,21 +477,23 @@ resolves `#contact` against a target that already exists.
   dropped. Re-add the matching cut if one ever does.
 - `assets/img/` - mascot artwork and icons. Pages reference the `.webp`
   renditions; the `.png`/`.jpeg` masters have been removed, so re-encoding a
-  rendition means re-exporting its source first, then
-  `magick <src> -resize <w>x\> -strip tmp.png && cwebp -q 82 -alpha_q 90 -m 6`.
-  `cora-og-image.jpg` is the 1200×630 social card and `cora-apple-touch-icon.png`
-  the 180×180 iOS icon. Nine renditions are currently unused and are fair game
-  for a new section: `cora-mascot-full-figure`,
-  `cora-the-swiss-sovereign-coding-agent-mascot` (the previous home hero),
-  `cora-coding-in-a-server-room` (the previous Cora Code hero),
-  `cora-routing-requests-in-a-swiss-control-room` (the previous Cora Gateway
-  hero), `cora-firing-an-energy-beam`, `cora-at-a-dashboard-of-dials-and-gauges`,
-  `cora-redacting-confidential-data`,
-  `cora-routing-data-centre-waste-heat-to-a-town` and
-  `cora-gateway-sessions-light`. Artwork is plain `<img>` everywhere - `width`/`height`
-  from the file's own pixel size, `alt`, `decoding="async"`, and either
-  `loading="lazy"` or, for the hero images, `fetchpriority="high"`. Crop and
-  corners come from the stylesheet, so a new image needs no rule of its own.
+  rendition means re-exporting its source first, then `magick <src> -resize
+  <w>x\> -strip tmp.png && cwebp -q 82 -alpha_q 90 -m 6`. `keera-og-image.jpg`
+  is the 1200×630 social card and `keera-apple-touch-icon.png` the 180×180 iOS
+  icon. Nine renditions are currently unused and are fair game for a new
+  section: `keera-mascot-full-figure`,
+  `keera-the-swiss-sovereign-coding-agent-mascot` (the previous home hero),
+  `keera-coding-in-a-server-room` (the previous Keera Code hero),
+  `keera-routing-requests-in-a-swiss-control-room` (the previous Keera Gateway
+  hero), `keera-firing-an-energy-beam`,
+  `keera-at-a-dashboard-of-dials-and-gauges`,
+  `keera-redacting-confidential-data`,
+  `keera-routing-data-centre-waste-heat-to-a-town` and
+  `keera-gateway-sessions-light`. Artwork is plain `<img>` everywhere -
+  `width`/`height` from the file's own pixel size, `alt`, `decoding="async"`,
+  and either `loading="lazy"` or, for the hero images, `fetchpriority="high"`.
+  Crop and corners come from the stylesheet, so a new image needs no rule of its
+  own.
 
 ## Metadata
 
@@ -499,9 +503,9 @@ block in `<head>` (`404.html` is the exception - see above), where the parser re
 crawlers fetch the raw HTML and read `<head>` without executing script, and the
 whole page is raw HTML, so they see the markup and the metadata alike.
 
-Every URL in the metadata is absolute `https://cora.swiss/...`, so they all need
+Every URL in the metadata is absolute `https://keera.ch/...`, so they all need
 updating if the domain changes. Canonicals, `og:url` and the sitemap use the
-directory form for the three home pages - `https://cora.swiss/`,
+directory form for the three home pages - `https://keera.ch/`,
 `/en/`, `/fr/`, not `/index.html` - because that is what GitHub Pages serves and
 what inbound links point to. Internal links match: `href="./"` for the home page
 of the current language.

@@ -1,4 +1,4 @@
-/* Cora - one stylesheet for all nineteen pages (the eighteen content pages
+/* Keera - one stylesheet for all nineteen pages (the eighteen content pages
    and 404.html).
    Quiet, one accent, light or dark depending on the viewer's system setting.
    Layout is a single column: .wrap for full-width bands, .prose for anything
@@ -260,7 +260,7 @@ strong {
 .brand:hover {
   text-decoration: none;
 }
-.brand svg {
+.brand img {
   display: block;
   flex: 0 0 auto;
 }
@@ -516,7 +516,7 @@ strong {
 /* The two brand marks in #omnivor on the sustainability pages. Not part of the
    five-glyph icon set: these are filled marks in each side's own colour, and
    they are built from the same two parts on purpose, so the shapes carry the
-   contrast - Cora's C is open with the square at its mouth, Omnivor's O is
+   contrast - Keera's K is open with the square in its throat, Omnivor's O is
    closed with the square sealed inside. Each sits inside its own <h3>, to the
    left of the name, so the mark and the name read as one line - which is why
    this one is 26px where the product icons above a name are 30px. */
@@ -530,7 +530,7 @@ strong {
   width: 26px;
   height: 26px;
 }
-.logo--cora {
+.logo--keera {
   color: var(--accent);
 }
 .logo--omnivor {
@@ -581,7 +581,7 @@ strong {
    tokens in both schemes, and they stay readable to a screen reader in source
    order. */
 
-/* What Cora Code is, as a stack: the layers share their borders so the block
+/* What Keera Code is, as a stack: the layers share their borders so the block
    reads as one thing seen in cross-section rather than four loose cards. The
    API layer carries the accent because it is the only layer a client touches. */
 .stack-fig {

@@ -1,10 +1,10 @@
-# Cora - static site
+# Keera - static site
 
 Plain static pages, no build step. Eighteen content `.html` files - six pages in
 German at the root, English under `en/`, French under `fr/` - plus `404.html`
 and three shared files under `assets/`:
 
-- `assets/css/cora.css` - the whole design layer. Markup carries classes only.
+- `assets/css/keera.css` - the whole design layer. Markup carries classes only.
 - `assets/js/contact-form.js` - the contact form's submit handler.
 - `assets/fonts/`, `assets/img/` - woff2 subsets and artwork.
 
