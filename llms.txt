@@ -1,0 +1,37 @@
+# Keera Stack
+
+> Keera Stack is the AI stack bespinian runs in Switzerland: Keera Gateway, one
+> endpoint that decides who may use which model for what and logs every request,
+> and Keera Code, a coding agent on open-weight models running on Swiss GPUs.
+> Inference, logs and backups stay in Swiss data centres.
+
+The site is eighteen static pages in three languages. German is the default and
+lives at the root, French under `/fr/` and English under `/en/`, and every page
+carries the same filename in all three: `gateway.html` is `/gateway.html`,
+`/fr/gateway.html` and `/en/gateway.html`. The links below point at the English
+copies; every page links its alternates with `rel="alternate" hreflang` in its head.
+
+Claims the site makes and stands behind: every model is open weight and
+portable, prompts and repository context are never used for training, and there
+is no failover to infrastructure outside Switzerland.
+
+## Overview
+
+- [Keera Stack](https://keera.ch/en/): Keera Gateway controls every model in the company, Keera Code brings the coding models. Both run in Swiss data centres.
+
+## Products
+
+- [Keera Gateway](https://keera.ch/en/gateway.html): One endpoint between your teams and every LLM: policies, budgets and an audit log with no gaps. Carries the request-flow architecture, the six features and eight FAQ answers.
+- [Keera Code](https://keera.ch/en/code.html): Open-weight models for code, run on Swiss GPUs. In the terminal, in the IDE and in the pipeline. Carries the table of models offered.
+
+## Background
+
+- [Sovereignty](https://keera.ch/en/sovereignty.html): One endpoint every AI request passes through. Open weights, Swiss operation, no failover abroad.
+- [Sustainability](https://keera.ch/en/sustainability.html): We pick infrastructure partners on how much renewable energy runs their data centres. And Keera saves tokens with smaller models, routing and caching.
+- [Keera's story](https://keera.ch/en/story.html): A comic in four acts: Keera follows the data into a hall with no address and builds the gate she was missing there.
+
+## Optional
+
+- [Deutsch](https://keera.ch/): the same six pages in German, the site's default language.
+- [Français](https://keera.ch/fr/): the same six pages in French.
+- [Sitemap](https://keera.ch/sitemap.xml): all eighteen URLs with their language alternates.

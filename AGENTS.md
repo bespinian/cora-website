@@ -115,12 +115,25 @@ the home page. Keep new lists in that order.
   it.
 - `story.html` - the comic in four acts, four rendered pages, 24 panels.
 
-`robots.txt`, `sitemap.xml`, `404.html` and `.htaccess` sit at the root. The
-sitemap lists all eighteen content URLs with `xhtml:link` alternates and a
-`<lastmod>`; regenerate it when a page is added, and touch the `<lastmod>` of
-any page whose content actually changed. It carries no `<changefreq>` and no
+`robots.txt`, `sitemap.xml`, `llms.txt`, `404.html` and `.htaccess` sit at the
+root. The sitemap lists all eighteen content URLs with `xhtml:link` alternates
+and a `<lastmod>`; regenerate it when a page is added, and touch the `<lastmod>`
+of any page whose content actually changed. It carries no `<changefreq>` and no
 `<priority>` - Google ignores both, and `<lastmod>` is the one field it reads.
 `404.html` is deliberately not in it.
+
+`llms.txt` is the [llmstxt.org](https://llmstxt.org/) file: an H1, a blockquote
+summary, a few lines of orientation, then `## Overview`, `## Products`,
+`## Background` and `## Optional`, each a list of `[title](url): description`
+links. It is Markdown despite the `.txt` name, and the H1 is what Lighthouse's
+llms.txt audit checks for - a missing file reads there as "Fetch of llms.txt
+failed", not as "no such file". Only six of the eighteen URLs are in it, the
+English copies, with the German and French home pages under `## Optional`: the
+file is a short orientation for a model, not a second sitemap, and the pages
+carry `hreflang` alternates anyway. The descriptions are the pages' own
+`<meta name="description">` strings, so a reworded description belongs in both
+places. Add a line here when a page is added, and leave the products in
+gateway-then-code order.
 
 ## The 404 page
 
