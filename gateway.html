@@ -257,7 +257,48 @@
         </div>
       </section>
 
-      <section class="band band--alt" id="web-ui">
+      <section class="band band--alt" id="security">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Vier Dinge, die es kontrolliert</h2>
+            <p>
+              Ein Endpunkt, der dir gehört - und vier Entscheide, die er für
+              jede einzelne Anfrage trifft.
+            </p>
+          </div>
+          <div class="facts facts--four">
+            <div>
+              <h3>Schluss mit Shadow AI</h3>
+              <p>
+                Blockiere den direkten Egress am Proxy, und jede KI-Anfrage im
+                Unternehmen wird sichtbar.
+              </p>
+            </div>
+            <div>
+              <h3>Policy pro Team</h3>
+              <p>
+                Welche Modelle, Repos und Datenklassen erreichbar sind, steht in
+                einer versionierten Policy - durchgesetzt pro Anfrage.
+              </p>
+            </div>
+            <div>
+              <h3>Kosten, die du zuordnen kannst</h3>
+              <p>
+                Ausgaben nach Team, Repo und Kostenstelle, mit harten
+                Budgetgrenzen und Alarm vor der Rechnung.
+              </p>
+            </div>
+            <div>
+              <h3>Audit und Redaction</h3>
+              <p>
+                Secrets und Personendaten fallen am Edge raus. Prompt, Modell,
+                Entscheid und Identität gehen unveränderlich in dein SIEM.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="band" id="web-ui">
         <div class="wrap">
           <div class="prose">
             <h2>Web-UI oder CLI, dieselbe Kontrolle</h2>
@@ -293,61 +334,64 @@
         </div>
       </section>
 
-      <section class="band" id="security">
+      <section class="band band--alt" id="features">
         <div class="wrap">
-          <div class="split split--narrow">
-            <div class="prose">
-              <h2>Vier Dinge, die es kontrolliert</h2>
-              <p>
-                Ein Endpunkt, der dir gehört - und vier Entscheide, die er für
-                jede einzelne Anfrage trifft.
-              </p>
-            </div>
-            <figure class="figure">
-              <img
-                src="assets/img/keera-at-a-checkpoint-gate.webp"
-                width="400"
-                height="400"
-                alt="Keera an einem Kontrollposten"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
+          <div class="prose">
+            <h2>Features</h2>
+            <p>
+              Das Gateway ist mehr als ein Proxy. Hier sind einige seiner
+              stärksten Features - jedes davon in der Web-UI und in der CLI.
+            </p>
           </div>
-          <div class="facts facts--four">
-            <div>
-              <h3>Schluss mit Shadow AI</h3>
+          <div class="grid">
+            <div class="card">
+              <h3>Guardrails</h3>
               <p>
-                Blockiere den direkten Egress am Proxy, und jede KI-Anfrage im
-                Unternehmen wird sichtbar.
+                Erlaubte Modelle, Rate Limits und Budgets - pro Organisation,
+                Team und Schlüssel. Versioniert, bei jeder Anfrage geprüft, im
+                Zweifel abgelehnt.
               </p>
             </div>
-            <div>
-              <h3>Policy pro Team</h3>
+            <div class="card">
+              <h3>Filter</h3>
               <p>
-                Welche Modelle, Repos und Datenklassen erreichbar sind, steht in
-                einer versionierten Policy - durchgesetzt pro Anfrage.
+                Ein kleines Modell liest jede Anfrage und nimmt Secrets,
+                Kundennamen und Personendaten heraus - oder stoppt sie. Erst im
+                Schattenmodus messen, dann scharf schalten.
               </p>
             </div>
-            <div>
-              <h3>Kosten, die du zuordnen kannst</h3>
+            <div class="card">
+              <h3>Router</h3>
               <p>
-                Ausgaben nach Team, Repo und Kostenstelle, mit harten
-                Budgetgrenzen und Alarm vor der Rechnung.
+                Ein kleines Modell wählt, welches Modell antwortet: das schnelle
+                lokale für kurze Edits, das grosse nur, wenn die Aufgabe es
+                braucht.
               </p>
             </div>
-            <div>
-              <h3>Audit und Redaction</h3>
+            <div class="card">
+              <h3>Live Map</h3>
               <p>
-                Secrets und Personendaten fallen am Edge raus. Prompt, Modell,
-                Entscheid und Identität gehen unveränderlich in dein SIEM.
+                Clients, Gateway und Modelle als Bild, mit einer Linie quer
+                durch: darüber bleibt es im eigenen Netz, darunter verlässt es
+                das Haus. Anfragen laufen live darüber.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Sessions</h3>
+              <p>
+                Ein Auftrag an den Coding Agent sind vierzig Aufrufe. Kosten,
+                Dauer und Ausgang stehen pro Auftrag - die Zahl, über die man
+                reden kann.
+              </p>
+            </div>
+            <div class="card">
+              <h3>SSO und Rollen</h3>
+              <p>
+                Anmeldung an deinem eigenen Identity Provider, Rechte aus deinen
+                Verzeichnisgruppen. Jede Änderung steht im Audit-Log.
               </p>
             </div>
           </div>
-          <p class="note">
-            ISO 27001 · revDSG und DSGVO · FINMA-Outsourcing-fähig · EU AI Act
-            GPAI-Dokumentation · SBOM pro Release
-          </p>
         </div>
       </section>
       <section class="band" id="contact">

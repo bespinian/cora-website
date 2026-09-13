@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Souveränität - wie Keera gebaut ist</title>
+    <title>Souveränität - jede Anfrage unter deiner Kontrolle</title>
     <meta
       name="description"
-      content="Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland. Schicht für Schicht dokumentiert."
+      content="Ein Endpunkt, an dem jede KI-Anfrage vorbeikommt. Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland."
     />
     <link rel="canonical" href="https://keera.ch/sovereignty.html" />
     <link
@@ -55,10 +55,13 @@
     <meta property="og:site_name" content="Keera Stack" />
     <meta property="og:locale" content="de_CH" />
     <meta property="og:url" content="https://keera.ch/sovereignty.html" />
-    <meta property="og:title" content="Souveränität - wie Keera gebaut ist" />
+    <meta
+      property="og:title"
+      content="Souveränität - jede Anfrage unter deiner Kontrolle"
+    />
     <meta
       property="og:description"
-      content="Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland. Schicht für Schicht dokumentiert."
+      content="Ein Endpunkt, an dem jede KI-Anfrage vorbeikommt. Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland."
     />
     <meta
       property="og:image"
@@ -72,10 +75,13 @@
       content="Keera, das Maskottchen des souveränen Schweizer Coding-Agenten"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Souveränität - wie Keera gebaut ist" />
+    <meta
+      name="twitter:title"
+      content="Souveränität - jede Anfrage unter deiner Kontrolle"
+    />
     <meta
       name="twitter:description"
-      content="Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland. Schicht für Schicht dokumentiert."
+      content="Ein Endpunkt, an dem jede KI-Anfrage vorbeikommt. Offene Weights, Schweizer Betrieb, kein Fallback ins Ausland."
     />
     <meta
       name="twitter:image"
@@ -155,22 +161,23 @@
         <div class="wrap">
           <div>
             <p class="eyebrow">Souveränität</p>
-            <h1>Dein Code hat gar keinen anderen Ort</h1>
+            <h1>Eine Tür nach draussen, und du hast den Schlüssel</h1>
             <p class="lede">
-              Souveränität ist kein Versprechen im Vertrag. Sie ist eine
-              Architektur ohne ausländische Abhängigkeit, auf die sie ausweichen
-              könnte. Diese Seite zeigt unsere, Schicht für Schicht.
+              Souveränität ist kein Versprechen im Vertrag. Sie ist ein
+              Endpunkt, an dem jede KI-Anfrage deines Unternehmens vorbeikommt,
+              und dahinter eine Architektur ohne ausländische Abhängigkeit.
+              Diese Seite zeigt beides, Schicht für Schicht.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Keera testen</a>
             </p>
           </div>
-          <figure class="hero-art hero-art--framed">
+          <figure class="hero-art">
             <img
-              src="assets/img/keera-holding-a-key-in-a-swiss-data-centre.webp"
-              width="1376"
-              height="768"
-              alt="Keera hält einen Schlüssel in einem Schweizer Rechenzentrum"
+              src="assets/img/keera-plugging-a-cable-into-a-server-rack.webp"
+              width="900"
+              height="675"
+              alt="Keera steckt in einem Rechenzentrum ein Kabel in ein Server-Rack"
               fetchpriority="high"
               decoding="async"
             />
@@ -182,6 +189,10 @@
         <div class="wrap">
           <div class="prose">
             <h2>Schicht für Schicht</h2>
+            <p>
+              Zuoberst steht Keera Gateway - der eine Ort, an dem deine Regeln
+              greifen. Darunter liegt nichts, was sie umgehen könnte.
+            </p>
           </div>
           <div class="table-wrap">
             <table>
@@ -194,6 +205,30 @@
               </thead>
               <tbody>
                 <tr>
+                  <th scope="row">Der Endpunkt</th>
+                  <td>
+                    Deine versionierte Policy entscheidet pro Anfrage, welches
+                    Modell sie sieht. OpenAI-kompatibel, also austauschbar.
+                  </td>
+                  <td class="tight">dein Tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Deine Daten</th>
+                  <td>
+                    Prompts und Repository-Kontext leben nur in der Session.
+                    Secrets und Personendaten fallen am Gateway raus.
+                  </td>
+                  <td class="tight">dein Tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Audit-Log</th>
+                  <td>
+                    Jede Anfrage mit Identität, Modell und Entscheid. Es gehört
+                    dir, geht in dein SIEM, nie eine Kopie ins Ausland.
+                  </td>
+                  <td class="tight">nur CH</td>
+                </tr>
+                <tr>
                   <th scope="row">Model Weights</th>
                   <td>
                     Offene Lizenz, von dir herunterladbar. Niemand kann sie
@@ -204,26 +239,10 @@
                 <tr>
                   <th scope="row">Inferenz</th>
                   <td>
-                    bespinian, eine Schweizer Gesellschaft, auf eigenen GPUs -
+                    bespinian, eine Schweizer Gesellschaft, auf Schweizer GPUs -
                     keine Hyperscaler.
                   </td>
                   <td class="tight">Schweiz</td>
-                </tr>
-                <tr>
-                  <th scope="row">Dein Code</th>
-                  <td>
-                    Nur im Arbeitsspeicher der Session. Was persistiert, ist mit
-                    deinen Schlüsseln verschlüsselt.
-                  </td>
-                  <td class="tight">dein Tenant</td>
-                </tr>
-                <tr>
-                  <th scope="row">Logs und Backups</th>
-                  <td>
-                    Die Audit-Logs gehören dir. Georedundant, aber nie eine
-                    Replik im Ausland.
-                  </td>
-                  <td class="tight">nur CH</td>
                 </tr>
                 <tr>
                   <th scope="row">Support-Zugriff</th>
@@ -248,12 +267,13 @@
           <div class="facts">
             <div>
               <h3>
-                Kannst du weiterarbeiten, wenn der Anbieter morgen verschwindet?
+                Weisst du, was dein Unternehmen gestern an eine KI geschickt
+                hat?
               </h3>
               <p>
-                Mit Keera ja: die Weights stehen unter Apache-2.0, die Runtime
-                kommt als Helm-Chart, und die Escrow-Vereinbarung übergibt dir
-                beides.
+                Mit dem Gateway ja. Sperr den direkten Egress am Proxy, und jede
+                Anfrage steht im Log - statt in einem privaten Konto bei einem
+                Anbieter im Ausland.
               </p>
             </div>
             <div>
@@ -265,10 +285,13 @@
               </p>
             </div>
             <div>
-              <h3>Woher kommt die Kapazität bei Spitzenlast?</h3>
+              <h3>
+                Kannst du weiterarbeiten, wenn der Anbieter morgen verschwindet?
+              </h3>
               <p>
-                Aus reservierten Schweizer GPUs. Anfragen warten in der Queue,
-                statt ins Ausland auszuweichen. So steht es im SLA.
+                Mit Keera ja: Das Gateway kommt als Helm-Chart, die Weights
+                stehen unter Apache-2.0, und die Escrow-Vereinbarung übergibt
+                dir beides.
               </p>
             </div>
           </div>
@@ -278,6 +301,26 @@
       <section class="band">
         <div class="wrap">
           <div class="prose">
+            <h2>Souverän heisst nicht abgeschottet</h2>
+            <p>
+              Manchmal braucht ein Team ein Modell, das es nur im Ausland gibt.
+              Das Gateway macht daraus einen Entscheid statt eines Risikos: Du
+              gibst es pro Team und Datenklasse frei, und was nicht hinaus darf,
+              kommt gar nicht erst an die Grenze.
+            </p>
+            <p>
+              Bei Spitzenlast warten Anfragen in einer Schweizer Queue, statt
+              still ins Ausland auszuweichen - so steht es im SLA. Und weil die
+              Adresse dieselbe bleibt, änderst du die Route, ohne eine einzige
+              Anwendung anzufassen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--alt">
+        <div class="wrap">
+          <div class="prose">
             <h2>Aus Open Source gebaut</h2>
             <p>
               Keera ist keine Blackbox. Dein Security-Team kann lesen, was auf
@@ -285,15 +328,16 @@
             </p>
             <ul class="plain-list">
               <li>
+                <strong>Keera Gateway</strong> - als Helm-Chart in deinem
+                Cluster, mit OpenAI-kompatibler API
+              </li>
+              <li>
                 <strong>Qwen-Coder und Apertus</strong> - Open-Weight-Modelle,
                 Apache-2.0
               </li>
               <li>
-                <strong>vLLM</strong> - Inferenz-Serving mit hohem Durchsatz
-              </li>
-              <li>
-                <strong>llm-d auf Kubernetes</strong> - Scheduling und Routing,
-                verteilt als Helm-Chart
+                <strong>vLLM und llm-d auf Kubernetes</strong> -
+                Inferenz-Serving, Scheduling und Routing
               </li>
             </ul>
             <p>
@@ -305,14 +349,14 @@
         </div>
       </section>
 
-      <section class="band band--alt">
+      <section class="band">
         <div class="wrap">
           <div class="prose">
             <h2>Schick uns deinen Risiko-Fragebogen</h2>
             <p>
-              Wir beantworten ihn vollständig vor dem ersten Workshop. ISO
-              27001, revDSG-Mapping, FINMA-Dokumentation und
-              EU-AI-Act-Unterlagen gibt es auf Anfrage.
+              Wir beantworten ihn vollständig vor dem ersten Workshop - auch die
+              Fragen, bei denen die Antwort «noch nicht» lautet. Architektur,
+              Betrieb und Datenflüsse legen wir so offen, wie sie heute sind.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Kontakt aufnehmen</a>

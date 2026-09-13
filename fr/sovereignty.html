@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Souveraineté - comment Keera est construite</title>
+    <title>Souveraineté - chaque requête sous votre contrôle</title>
     <meta
       name="description"
-      content="Poids ouverts, exploitation suisse, aucun repli à l'étranger. Documenté couche par couche."
+      content="Un point d'entrée par lequel passe chaque requête IA. Poids ouverts, exploitation suisse, aucun repli à l'étranger."
     />
     <link rel="canonical" href="https://keera.ch/fr/sovereignty.html" />
     <link
@@ -64,11 +64,11 @@
     <meta property="og:url" content="https://keera.ch/fr/sovereignty.html" />
     <meta
       property="og:title"
-      content="Souveraineté - comment Keera est construite"
+      content="Souveraineté - chaque requête sous votre contrôle"
     />
     <meta
       property="og:description"
-      content="Poids ouverts, exploitation suisse, aucun repli à l'étranger. Documenté couche par couche."
+      content="Un point d'entrée par lequel passe chaque requête IA. Poids ouverts, exploitation suisse, aucun repli à l'étranger."
     />
     <meta
       property="og:image"
@@ -84,11 +84,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Souveraineté - comment Keera est construite"
+      content="Souveraineté - chaque requête sous votre contrôle"
     />
     <meta
       name="twitter:description"
-      content="Poids ouverts, exploitation suisse, aucun repli à l'étranger. Documenté couche par couche."
+      content="Un point d'entrée par lequel passe chaque requête IA. Poids ouverts, exploitation suisse, aucun repli à l'étranger."
     />
     <meta
       name="twitter:image"
@@ -168,22 +168,23 @@
         <div class="wrap">
           <div>
             <p class="eyebrow">Souveraineté</p>
-            <h1>Votre code n'a aucun autre endroit</h1>
+            <h1>Une seule porte vers l'extérieur, et vous avez la clé</h1>
             <p class="lede">
-              La souveraineté n'est pas une promesse dans un contrat. C'est une
-              architecture sans dépendance étrangère où se replier. Cette page
-              montre la nôtre, couche par couche.
+              La souveraineté n'est pas une promesse dans un contrat. C'est un
+              point d'entrée par lequel passe chaque requête IA de votre
+              entreprise, et derrière lui une architecture sans dépendance
+              étrangère. Cette page montre les deux, couche par couche.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Essayer Keera</a>
             </p>
           </div>
-          <figure class="hero-art hero-art--framed">
+          <figure class="hero-art">
             <img
-              src="../assets/img/keera-holding-a-key-in-a-swiss-data-centre.webp"
-              width="1376"
-              height="768"
-              alt="Keera tient une clé dans un centre de données suisse"
+              src="../assets/img/keera-plugging-a-cable-into-a-server-rack.webp"
+              width="900"
+              height="675"
+              alt="Keera branche un câble sur une baie de serveurs dans un centre de données"
               fetchpriority="high"
               decoding="async"
             />
@@ -195,6 +196,10 @@
         <div class="wrap">
           <div class="prose">
             <h2>Couche par couche</h2>
+            <p>
+              Keera Gateway est tout en haut&nbsp;: le seul endroit où vos
+              règles s'appliquent. En dessous, rien ne peut les contourner.
+            </p>
           </div>
           <div class="table-wrap">
             <table>
@@ -206,6 +211,31 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <th scope="row">Le point d'entrée</th>
+                  <td>
+                    Votre politique versionnée décide, pour chaque requête, quel
+                    modèle la voit. Compatible OpenAI, donc remplaçable.
+                  </td>
+                  <td class="tight">votre tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Vos données</th>
+                  <td>
+                    Les prompts et le contexte du dépôt ne vivent que le temps
+                    de la session. Secrets et données personnelles sont masqués
+                    à la passerelle.
+                  </td>
+                  <td class="tight">votre tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Journal d'audit</th>
+                  <td>
+                    Chaque requête avec identité, modèle et décision. Il est à
+                    vous, part dans votre SIEM, jamais une copie à l'étranger.
+                  </td>
+                  <td class="tight">CH uniquement</td>
+                </tr>
                 <tr>
                   <th scope="row">Poids du modèle</th>
                   <td>
@@ -221,22 +251,6 @@
                     aucune capacité hyperscaler.
                   </td>
                   <td class="tight">Suisse</td>
-                </tr>
-                <tr>
-                  <th scope="row">Votre code</th>
-                  <td>
-                    En mémoire pour la durée de la session. Ce qui persiste est
-                    chiffré avec vos clés.
-                  </td>
-                  <td class="tight">votre tenant</td>
-                </tr>
-                <tr>
-                  <th scope="row">Journaux et sauvegardes</th>
-                  <td>
-                    Les journaux d'audit sont à vous. Géoredondants, mais jamais
-                    une réplique à l'étranger.
-                  </td>
-                  <td class="tight">CH uniquement</td>
                 </tr>
                 <tr>
                   <th scope="row">Accès du support</th>
@@ -261,12 +275,12 @@
           <div class="facts">
             <div>
               <h3>
-                Pouvez-vous continuer si le fournisseur disparaît demain&nbsp;?
+                Savez-vous ce que votre entreprise a envoyé à une IA hier&nbsp;?
               </h3>
               <p>
-                Avec Keera, oui&nbsp;: les poids sont sous Apache-2.0, le
-                runtime arrive en chart Helm, et l'accord d'entiercement vous
-                remet les deux.
+                Avec la passerelle, oui. Bloquez la sortie directe sur le proxy,
+                et chaque requête figure dans le journal&nbsp;- au lieu d'un
+                compte privé chez un fournisseur à l'étranger.
               </p>
             </div>
             <div>
@@ -281,10 +295,13 @@
               </p>
             </div>
             <div>
-              <h3>D'où vient la capacité en pointe&nbsp;?</h3>
+              <h3>
+                Pouvez-vous continuer si le fournisseur disparaît demain&nbsp;?
+              </h3>
               <p>
-                De GPU suisses réservés. Les requêtes attendent en file au lieu
-                de se replier à l'étranger. C'est inscrit dans le SLA.
+                Avec Keera, oui&nbsp;: la passerelle arrive en chart Helm, les
+                poids sont sous Apache-2.0, et l'accord d'entiercement vous
+                remet les deux.
               </p>
             </div>
           </div>
@@ -292,6 +309,27 @@
       </section>
 
       <section class="band">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Souverain ne veut pas dire coupé du monde</h2>
+            <p>
+              Parfois, une équipe a besoin d'un modèle qui n'existe qu'à
+              l'étranger. La passerelle en fait une décision plutôt qu'un
+              risque&nbsp;: vous l'autorisez par équipe et par classe de
+              données, et ce qui ne doit pas sortir n'atteint jamais la
+              frontière.
+            </p>
+            <p>
+              En pointe, les requêtes attendent en file en Suisse au lieu de se
+              replier discrètement à l'étranger&nbsp;- c'est inscrit dans le
+              SLA. Et comme l'adresse reste la même, vous changez la route sans
+              toucher à une seule application.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--alt">
         <div class="wrap">
           <div class="prose">
             <h2>Construite en open source</h2>
@@ -302,15 +340,16 @@
             </p>
             <ul class="plain-list">
               <li>
+                <strong>Keera Gateway</strong>&nbsp;- un chart Helm dans votre
+                cluster, avec une API compatible OpenAI
+              </li>
+              <li>
                 <strong>Qwen-Coder et Apertus</strong>&nbsp;- modèles à poids
                 ouverts, Apache-2.0
               </li>
               <li>
-                <strong>vLLM</strong>&nbsp;- service d'inférence à haut débit
-              </li>
-              <li>
-                <strong>llm-d sur Kubernetes</strong>&nbsp;- ordonnancement et
-                routage, livrés en charts Helm
+                <strong>vLLM et llm-d sur Kubernetes</strong>&nbsp;- service
+                d'inférence, ordonnancement et routage
               </li>
             </ul>
             <p>
@@ -321,14 +360,15 @@
         </div>
       </section>
 
-      <section class="band band--alt">
+      <section class="band">
         <div class="wrap">
           <div class="prose">
             <h2>Envoyez-nous votre questionnaire de risque</h2>
             <p>
-              Nous y répondons entièrement avant le premier atelier. ISO 27001,
-              correspondance nLPD, documentation FINMA et dossiers relatifs au
-              règlement européen sur l'IA sur demande.
+              Nous y répondons entièrement avant le premier atelier&nbsp;- y
+              compris aux questions dont la réponse est «&nbsp;pas
+              encore&nbsp;». Architecture, exploitation et flux de données,
+              exposés tels qu'ils sont aujourd'hui.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Nous contacter</a>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nachhaltigkeit - woher der Strom kommt</title>
+    <title>Nachhaltigkeit - sauberer Strom, weniger Token</title>
     <meta
       name="description"
-      content="Keera läuft an einem der saubersten Netze Europas. Was wir belegen können und was nicht."
+      content="Wir wählen Infrastruktur-Partner nach dem Anteil erneuerbarer Energie. Und Keera spart Token mit kleineren Modellen, Routing und Caching."
     />
     <link rel="canonical" href="https://keera.ch/sustainability.html" />
     <link
@@ -57,11 +57,11 @@
     <meta property="og:url" content="https://keera.ch/sustainability.html" />
     <meta
       property="og:title"
-      content="Nachhaltigkeit - woher der Strom kommt"
+      content="Nachhaltigkeit - sauberer Strom, weniger Token"
     />
     <meta
       property="og:description"
-      content="Keera läuft an einem der saubersten Netze Europas. Was wir belegen können und was nicht."
+      content="Wir wählen Infrastruktur-Partner nach dem Anteil erneuerbarer Energie. Und Keera spart Token mit kleineren Modellen, Routing und Caching."
     />
     <meta
       property="og:image"
@@ -77,11 +77,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Nachhaltigkeit - woher der Strom kommt"
+      content="Nachhaltigkeit - sauberer Strom, weniger Token"
     />
     <meta
       name="twitter:description"
-      content="Keera läuft an einem der saubersten Netze Europas. Was wir belegen können und was nicht."
+      content="Wir wählen Infrastruktur-Partner nach dem Anteil erneuerbarer Energie. Und Keera spart Token mit kleineren Modellen, Routing und Caching."
     />
     <meta
       name="twitter:image"
@@ -112,7 +112,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="theme-leaf">
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
     <header class="site-header">
       <div class="wrap">
@@ -161,11 +161,11 @@
         <div class="wrap">
           <div>
             <p class="eyebrow">Nachhaltigkeit</p>
-            <h1>Keera läuft mit Schweizer Strom</h1>
+            <h1>Weniger Strom - und sauberer Strom</h1>
             <p class="lede">
-              Keera hängt an einem der saubersten Netze Europas: Wasserkraft und
-              Solar, derselbe Strom wie im Rest des Landes. Was wir belegen
-              können, steht hier. Was nicht, auch.
+              Zwei Dinge entscheiden, was eine KI-Anfrage die Umwelt kostet:
+              woher der Strom im Rechenzentrum kommt und wie viele Token die
+              Antwort braucht. Wir arbeiten an beidem.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Keera testen</a>
@@ -176,7 +176,7 @@
               src="assets/img/keera-at-a-swiss-hydro-dam.webp"
               width="1200"
               height="800"
-              alt="Keera an einer Schweizer Staumauer"
+              alt="Keera an einer Staumauer"
               fetchpriority="high"
               decoding="async"
             />
@@ -184,45 +184,116 @@
         </div>
       </section>
 
-      <section class="band">
+      <section class="band" id="partners">
         <div class="wrap">
+          <h2 class="icon-head">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M8.3 16.3C7.8 10.3 11.3 6.3 17.3 6.3c0 6-3.5 10-9 10Z"
+              ></path>
+              <path d="M6.7 17.9 14.6 9.5"></path>
+            </svg>
+            Wie wir Infrastruktur-Partner wählen
+          </h2>
           <div class="prose">
-            <h2>Woher der Strom kommt</h2>
+            <p>
+              Wir bauen keine eigenen Rechenzentren. Die Frage ist deshalb, nach
+              welchen Kriterien wir sie mieten - und das erste davon ist der
+              Anteil erneuerbarer Energie, mit dem ein Haus läuft, nicht der
+              Preis pro GPU-Stunde.
+            </p>
           </div>
           <div class="facts facts--four">
             <div>
-              <h3>Das Netz</h3>
+              <h3>Anteil erneuerbarer Energie</h3>
               <p>
-                Schweizer Strom ist überwiegend Wasserkraft, mit schnell
-                wachsendem Solaranteil. An diesem Netz hängt Keera.
+                Wie viel des Stroms, mit dem ein Standort tatsächlich läuft,
+                kommt aus Wasser, Wind und Sonne? Das ist unsere erste Frage.
               </p>
             </div>
             <div>
-              <h3>Der Vertrag</h3>
+              <h3>Belegt, nicht zugekauft</h3>
               <p>
-                Wir wählen Schweizer Hosting-Partner mit einem Vertrag über
-                erneuerbaren Strom und nennen sie in der Due Diligence.
+                Wir wollen Zahlen für den Standort und das Jahr. Zertifikate,
+                die anderswo eingekauft werden, zählen wir nicht als sauberen
+                Strom.
               </p>
             </div>
             <div>
-              <h3>Die Hardware</h3>
+              <h3>Effizienz des Hauses</h3>
               <p>
-                Wir bevorzugen Häuser mit Flüssigkühlung, geringem Overhead und
-                Abwärmenutzung, wo es sie gibt.
+                PUE, Flüssigkühlung, wenig Overhead. Strom, der in die Kühlung
+                geht, erledigt keine einzige Aufgabe.
               </p>
             </div>
             <div>
-              <h3>Weniger Token</h3>
+              <h3>Abwärme</h3>
               <p>
-                Routing und Caching halten die Zahl der Token tief. Das grünste
-                Token ist das, das nie erzeugt wird.
+                Häuser, die ihre Abwärme in ein Fernwärmenetz geben statt in die
+                Luft, kommen bei uns zuerst.
               </p>
             </div>
           </div>
+          <p class="note">
+            Unsere Standorte stehen heute in der Schweiz. Die Kriterien oben
+            gelten unabhängig davon - eine Schweizer Adresse allein ist kein
+            Nachhaltigkeitsargument.
+          </p>
         </div>
       </section>
 
-      <section class="band band--alt" id="omnivor">
+      <section class="band band--alt" id="tokens">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Das grünste Token ist das, das nie entsteht</h2>
+            <p>
+              Der zweite Hebel liegt bei uns selbst. Jede Aufgabe, die ein
+              kleineres Modell erledigt, und jeder Kontext, der nicht zweimal
+              durch die GPU läuft, spart Strom - sofort und ohne Vertrag.
+            </p>
+          </div>
+          <div class="facts">
+            <div>
+              <h3>Kleinere Modelle</h3>
+              <p>
+                Umbenennen, ein Test, eine Commit-Nachricht: Das meiste braucht
+                kein grosses Modell. Keera nimmt das kleinste, das die Aufgabe
+                erledigt.
+              </p>
+            </div>
+            <div>
+              <h3>Routing pro Anfrage</h3>
+              <p>
+                Das Gateway entscheidet für jede Anfrage, welches Modell
+                antwortet, und eskaliert erst, wenn das kleine nicht reicht.
+              </p>
+            </div>
+            <div>
+              <h3>Caching</h3>
+              <p>
+                Wiederkehrende Prompts und Repo-Kontext liegen im Cache.
+                Denselben Kontext zweimal zu schicken, kostet zweimal - Geld und
+                Strom.
+              </p>
+            </div>
+          </div>
+          <p class="note">
+            Dieselben Token-Zahlen, die im Audit-Log des Gateways die Kosten pro
+            Team zeigen, zeigen auch, wo Energie verschwindet.
+          </p>
+        </div>
+      </section>
+
+      <section class="band" id="omnivor">
         <div class="wrap">
           <div class="prose">
             <p class="eyebrow">Die Geschichte</p>
@@ -274,12 +345,11 @@
                   aria-hidden="true"
                 >
                   <path
-                    d="M9.6 8V24M22.4 8L9.6 16L22.4 24"
+                    d="M21.4 9.6A8.4 8.4 0 1 0 21.4 22.4"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="3.8"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
                   ></path>
                   <rect
                     x="20.6"
@@ -293,10 +363,10 @@
                 Keera
               </h3>
               <p>
-                Keera hängt am Netz des Landes, läuft bevorzugt in Häusern mit
-                Abwärmenutzung und schickt jede Aufgabe an das kleinste Modell,
-                das sie erledigen kann. Das macht sie nicht klimaneutral - es
-                macht sie überprüfbar.
+                Keera läuft in Häusern, die wir nach erneuerbarer Energie und
+                Abwärmenutzung ausgewählt haben, und schickt jede Aufgabe an das
+                kleinste Modell, das sie erledigen kann. Das macht sie nicht
+                klimaneutral - es macht sie überprüfbar.
               </p>
             </div>
           </div>
@@ -310,7 +380,7 @@
         </div>
       </section>
 
-      <section class="band" id="claims">
+      <section class="band band--alt" id="claims">
         <div class="wrap">
           <div class="prose">
             <h2>Was wir behaupten - und was nicht</h2>
@@ -324,10 +394,12 @@
               <h3>Das sagen wir</h3>
               <ul class="plain-list">
                 <li>
-                  Keera ist in der Schweiz gehostet, mit erneuerbarem Strom.
+                  Wir wählen Infrastruktur-Partner nach erneuerbarer Energie und
+                  Effizienz, nicht nur nach Preis.
                 </li>
                 <li>
-                  Wir wählen Partner nach Effizienz, nicht nur nach Preis.
+                  Kleinere Modelle, Routing und Caching senken den Verbrauch pro
+                  Aufgabe.
                 </li>
               </ul>
             </div>
@@ -357,13 +429,14 @@
         </div>
       </section>
 
-      <section class="band band--alt">
+      <section class="band">
         <div class="wrap">
           <div class="prose">
-            <h2>Frag uns zu Hosting und Energie</h2>
+            <h2>Frag uns nach Partnern und Zahlen</h2>
             <p>
-              Wir zeigen deinem Team, wo Keera läuft, wer den Strom liefert und
-              was wir heute belegen können.
+              Wir zeigen deinem Team, in welchen Häusern Keera läuft, wonach wir
+              sie ausgewählt haben und wie viele Token eine typische Aufgabe
+              wirklich braucht.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Kontakt aufnehmen</a>

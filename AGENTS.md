@@ -16,12 +16,18 @@ in the stylesheet.
 
 The site was rebuilt to be read, not admired. Keep it that way:
 
-- **Quiet, one accent, two schemes.** One blue (`--accent`) on a white or a
+- **Quiet, one accent, two schemes.** One accent colour on a white or a
   near-black ground, whichever the viewer's system asks for. No gradients, no
-  glows, no animation, no second or third accent colour. The artwork supplies
+  glows, no animation, no second or third accent on a page. The artwork supplies
   all the colour the page needs. Every colour goes through a token, so the dark
   scheme stays one block at the top of the stylesheet - a hex value anywhere
   else is a bug, because it can only be right in one of the two schemes.
+  The accent is blue (`--accent`) everywhere but the three sustainability
+  pages, which carry `class="theme-leaf"` on `<body>` and run the same design
+  in green (`--leaf`). That is a **swap, not an addition** - no page shows both
+  - and it is the one page whose subject is the colour: it argues about clean
+    power, so the colour it is drawn in is part of the argument. Do not give any
+    other page a theme class, and do not let green leak off these three.
 - **One idea per section.** A heading, at most two short paragraphs, and either
   three or four short cards or one table. If a section needs a fourth
   paragraph, it is two sections or it is cut.
@@ -33,10 +39,12 @@ The site was rebuilt to be read, not admired. Keep it that way:
   `artwork/` folder outside this repo), the Keera Code hero is Keera at her
   laptop (`keera-coding-on-a-laptop.webp`, from `laptop.png`), the Keera Gateway
   hero is Keera striding through a lit gate
-  (`keera-walking-through-a-gateway.webp`, from `gate.png`), and every other
-  page leads with one illustration of its own. All three product heroes are
-  cut-outs on transparent ground, so they sit in a bare `.hero-art` figure; only
-  artwork with its own background takes `.hero-art--framed`.
+  (`keera-walking-through-a-gateway.webp`, from `gate.png`), the Souveränität
+  hero is Keera patching a server rack
+  (`keera-plugging-a-cable-into-a-server-rack.webp`, from `data-center.png`),
+  and every other page leads with one illustration of its own. All four of those
+  heroes are cut-outs on transparent ground, so they sit in a bare `.hero-art`
+  figure; only artwork with its own background takes `.hero-art--framed`.
 - **Let the visuals carry it.** Now that the copy is short, a diagram or an
   illustration is the faster read, so each product page gets one diagram and
   two images rather than another paragraph. A diagram has to say something the
@@ -64,16 +72,41 @@ Keera Gateway is the more important of the two products and comes first wherever
 they are listed together: the header nav, the footer row, the two home cards,
 the interest checkboxes in the form, the sitemap, and the sentence that opens
 the home page. Keep new lists in that order.
+
 - `gateway.html` - Keera Gateway: hero, the request-flow diagram
-  (`#architecture`), the web UI shot, four things it controls (beside the
-  checkpoint-gate vignette), the form.
+  (`#architecture`), the web UI shot, four things it controls (`#security`,
+  cards only - the checkpoint-gate vignette that used to sit beside them is
+  gone), the six features (`#features`), the form. Its only illustration is the
+  hero; the dashboard shot stays because the section is written off its pixels.
+  `#security` and `#features` are the same page twice at two altitudes and have
+  to stay that way round: `#security` is what the endpoint decides for the
+  business, `#features` is what the product is made of - guardrails, filters,
+  routers, the live map, sessions, SSO and roles, one `.card` each in a `.grid`
+  on a `band--alt`. It is the one six-card section on the site, which is why it
+  is also the one that gets no second sentence of framing: three or four cards
+  is the rule everywhere else. The six names are the gateway's own, so a card
+  renamed here is a screen renamed in the product; check the gateway repo before
+  rewording one. No icons - the set is closed at eight glyphs per language.
 - `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
   illustration), the form.
-- `sovereignty.html` - the layer table, three questions, the open-source stack.
-- `sustainability.html` - where the power comes from, the Omnivor contrast, what
-  we claim and what we do not.
-- `story.html` - the comic in four acts over 24 panels.
+- `sovereignty.html` - the layer table, three questions, what the gateway routes
+  abroad and what it does not, the open-source stack. Its hero is its only
+  image; the control-room vignette that used to sit beside "Souverän heisst
+  nicht abgeschottet" is gone. The argument is Keera
+  Gateway's: one endpoint every request passes, a policy and an audit log that
+  are yours. Keera Code is one client of it, not the subject.
+- `sustainability.html` - two levers and one story: how we pick infrastructure
+  partners (`#partners`, on the renewable share that actually runs a site),
+  how Keera spends fewer tokens (`#tokens`, smaller models, routing, caching),
+  the Omnivor contrast, what we claim and what we do not. Swiss hosting is a
+  fact on the page, not the argument - a mono line under `#partners` says out
+  loud that a Swiss address alone is not a sustainability argument, and the
+  page must not drift back to leading with the grid. It carries its hero
+  illustration and no other image: a draft that put the waste-heat rendition
+  beside `#partners` was cut, because a page gets one hero image and that is
+  it.
+- `story.html` - the comic in four acts, four rendered pages, 24 panels.
 
 `robots.txt`, `sitemap.xml` and `404.html` sit at the root. The sitemap lists all
 eighteen content URLs with `xhtml:link` alternates; regenerate it when a page is
@@ -188,9 +221,19 @@ next to them.
   Swiss tenant, a two-unit rack for the dedicated one, a building for
   on-premise.
 
-That is seven glyphs per language, twenty-one across the site; keep the copies
-identical. Nothing else gets an icon - no nav item, no section heading, no fact
-cell. The set reads as meaningful only while it is exactly these five things.
+- **The leaf** in the `<h2>` of `#partners` on the sustainability pages, to the
+  left of the words rather than above them: the heading carries `.icon-head`
+  and the `<svg>` is inside it. It is the one glyph that sits beside a section
+  heading rather than over a name, and it belongs to `#partners` because that
+  section is the one about where the power comes from - it was drafted over
+  `#tokens` and moved. It takes no colour of its own: it is a plain `.icon`,
+  and on those three pages the accent is already the green it wants, which is
+  why the leaf and the theme swap have to stay together.
+
+That is eight glyphs per language, twenty-four across the site; keep the copies
+identical. Nothing else gets an icon - no nav item, no other section heading, no
+fact cell. The set reads as meaningful only while it is exactly these six
+things.
 
 The two brand marks in `#omnivor` on the sustainability pages are **not** part
 of that set and must not be drawn into it: `.logo--keera` and `.logo--omnivor`
@@ -201,10 +244,40 @@ sealed inside Omnivor's closed O - so the shapes make the section's argument
 before the copy does. Keera's is the header wordmark's own geometry; keep it
 that way.
 
+Since the page went green, `.logo--keera` follows `--accent` into green and the
+pair reads red against green - the one contrast a red-green colour deficiency
+flattens. It is why the shapes above are load-bearing rather than decorative:
+the open mark against the sealed one has to carry the section on its own, and
+the `<h3>` beside each mark names its side in words. Do not rebuild that
+section so colour is the only thing telling the two apart.
+
 They also sit differently from the icon set: each one is **inside** its `<h3>`,
 to the left of the name, and the heading carries `.logo-head` to lay the two out
 as one line. That is why they are 26px against the icon set's 30px - a mark
 beside 18px type wants less height than one standing above it.
+
+`.icon-head`, which puts the leaf inside the `#partners` `<h2>`, is the same row
+built for the other case and the two share their declarations. The differences
+are the ones a section heading forces: it aligns on `flex-start` rather than
+`center`, because an `<h2>` that wraps would leave a mark centred against both
+lines sitting beside neither, and the glyph is sized `1.15em` rather than in
+pixels, because the heading is a `clamp()` and a fixed mark would swamp it at
+24px and get lost at 31px.
+
+That `<h2>` is also **the one heading on the site that sits outside `.prose`**,
+as a direct child of `.wrap`. The 34rem measure is there to keep paragraphs
+readable, and at 31px it is about 30px short of holding the German heading and
+the leaf on one line - the wrap looked like an accident, because a flex row puts
+the second line under the first rather than under the icon. Out in `.wrap` the
+German and English headings hold one line down to a ~500px viewport. The French
+one, _Comment nous choisissons nos partenaires d'infrastructure_, needs ~914px
+and so still wraps below roughly a 970px viewport; shortening it is the only fix
+left, and it is a prose decision, not a layout one. Lifting the heading also put
+it under `.band > .wrap > * + *` (28px, the band rhythm) instead of `h2 + p`
+(14px, what a heading wants over its own paragraph), which is why
+`.icon-head + .prose` restates the gap. Do not take any other `<h2>` out of
+`.prose` to match - headings wrapping inside the measure is the site's normal,
+and `index.html` has longer ones that do.
 
 ## Keera's story
 
@@ -262,23 +335,43 @@ the key in 12, 21 catches the client name from 05, 23 lights the houses that
 were dark in 16, and 24 closes the loop on 01-02. Renumbering or dropping a
 panel breaks those sentences - fix the captions if you do.
 
-Panels run in a two-column grid. The four act-closing panels (05, 12, 17, 24)
-carry `panel--wide`: full width, 16:9, capped at 860px; the rest are 4:3. Every
-panel is a `<figure class="panel">` holding the artwork slot and a
-`<figcaption>` whose `<b>` is the panel number and whose text is the narration.
-The story is carried by those captions - keep them reading as a graphic novel,
-concrete and in sequence, not as feature bullets, and keep them short.
+The 24 panels are **drawn, lettered and numbered inside four rendered comic
+pages**, one per act - page 1 is panels 01-05, page 2 is 06-12, page 3 is 13-17,
+page 4 is 18-24. The earlier layout, a two-column grid of 24 single-panel
+figures with the narration in each `<figcaption>`, is gone; so is the
+`keera-story-NN.webp` naming. Do not rebuild it.
 
-Panel 01 is the only slot with real artwork (`keera-story-01.webp`). The other
-23 are `<div class="ph">` boxes showing nothing but `PANEL NN`, because the art
-brief is production information and does not belong on a public page. Each
-placeholder is preceded by an HTML comment holding the exact `<img>` to paste in
-its place (`assets/img/keera-story-NN.webp`, 1200×900 for pair panels, 1600×900
-for splashes, `loading="lazy"`, the brief pre-filled as `alt`) and the brief
-again as a record. Replace the whole placeholder `<div>`, keep the numbering,
-and collapse the comment to `<!-- PANEL NN - Brief: ... -->`. Those sizes are a
-target, not a crop to force: panel 01 ships at its source's native 1024×768, so
-set `width`/`height` from the file and keep the shape the row expects.
+Each act therefore holds exactly one `<figure class="comic">`: the page image,
+then a `<figcaption>` whose `<details>` opens a `<ol class="script">` transcript
+of that page's panels. The transcript is not decoration. A screen reader cannot
+read lettering baked into artwork, crawlers cannot either, and act IV's
+cross-references only work if the numbering is readable as text - so the `<ol>`
+carries `start="1"`, `start="6"`, `start="13"` and `start="18"` and the numbers
+come from `list-style: decimal-leading-zero`, which reproduces the artwork's own
+`01`-`24`. Its `<li>` text **is** the panel narration the old figcaptions
+carried, verbatim: keep it reading as a graphic novel, concrete and in sequence,
+not as feature bullets, and keep it short.
+
+The artwork is per language - the lettering is drawn into the panels, so all
+three languages carry their own four pages, at
+`assets/img/keera-story-<de|fr|en>-page-<1-4>.webp`. All twelve ship. The pages
+are portrait and their source dimensions vary per language (page 3 is 1086×1448
+in English and 1087×1447 in German and French), so take `width`/`height` from
+the file rather than from a table. Encode from the PNG master with
+`cwebp -q 82 -m 6 -sharp_yuv`, which lands each page around 270-370 KB; below
+q 80 the lettering starts to mush, and all four are `loading="lazy"` so only the
+first is on the critical path.
+
+Because the words live in the artwork, **a copy change is a re-render, in three
+languages.** Edit a transcript `<li>` and the page above it still says the old
+thing. The lettering is generated and drifts from the copy: it has produced
+Swiss dialect where the prose is Standard German, inverted whole panels, and
+still spells the gate `CORA GATEWAY` in panel 21 from before the rename. Check a
+new page against the transcript panel by panel before shipping it.
+
+The `alt` describes the page as a page - what is drawn in its panels, in
+sequence - because the transcript below it already carries the words. Do not
+paste the narration into `alt` as well.
 
 The story's setting is **an unnamed small city**, not Bern, so it reads as
 anywhere. Bern in the footer is a real company fact and stays. Hosting is
@@ -295,7 +388,7 @@ draft headlined it _Keera wurde gegen etwas gebaut_ ("Keera was built against
 something"), which framed her as a product decision; don't go back to that.
 
 `sustainability.html` picks the thread up in its own `#omnivor` section: the
-take-until-nothing-is-left card against Keera's same-grid-as-the-country card -
+take-until-nothing-is-left card against Keera's picked-on-renewables card -
 each name preceded by its own brand mark, red and blue - the footnote, and a
 link to the story. The refusal of the climate-neutral claim
 has to survive any rewrite, there and in the story's _what we do not claim_
@@ -378,15 +471,24 @@ it checks itself; everything else is native constraint validation.
 `@font-face` rules, the tokens, the base elements, then the components. Read it
 before adding a class - most sections need nothing new.
 
-- **Tokens** on `:root`: twelve colours - `--bg`, `--surface`, `--card`,
+- **Tokens** on `:root`: thirteen colours - `--bg`, `--surface`, `--card`,
   `--ink`, `--muted`, `--line`, `--accent`, `--accent-hover`, `--btn-ink`,
-  `--ok`, `--err`, `--omnivor` - plus the two font stacks, `--wrap` (1040px),
-  `--prose` (34rem) and `--radius`. A second accent is a design change, not a
-  tweak. `--omnivor` is the exception that proves it: it is the invented
-  corporation's red, it colours nothing but that one brand mark, and it stays
-  out of buttons, links and headings.
+  `--ok`, `--err`, `--omnivor`, `--leaf` - plus the two font stacks, `--wrap`
+  (1040px), `--prose` (34rem) and `--radius`. A second accent on one page is a
+  design change, not a tweak. The last two are the exceptions that prove it,
+  and each is read from exactly one place: `--omnivor` is the invented
+  corporation's red and colours nothing but its brand mark, `--leaf` is the
+  green the `.theme-leaf` block hands to `--accent` on the sustainability
+  pages. Nothing else may read either one.
+- **The green theme**: `.theme-leaf` sits directly under the dark-scheme block
+  and is two rules - `--accent: var(--leaf)` plus an `--accent-hover`, and a
+  dark-scheme copy that restates the hover shade alone. `--accent` needs saying
+  once because `--leaf` is already per-scheme; the hover is a literal hex and so
+  is not. Custom properties inherit, so a declaration on `<body>` beats `:root`
+  for the whole subtree no matter where it sits in the file or in which media
+  block - which is also why the print block needs no copy of it.
 - **Dark scheme**: one `@media (prefers-color-scheme: dark)` block right under
-  the tokens, redefining those twelve colours and nothing else. It follows the
+  the tokens, redefining those thirteen colours and nothing else. It follows the
   system setting; there is no toggle, and adding one would mean JavaScript plus
   a stored preference on a site that ships neither. `:root` carries
   `color-scheme: light dark` so the UA paints form controls and scrollbars to
@@ -417,9 +519,11 @@ before adding a class - most sections need nothing new.
   schemes, and stay in source order for a screen reader. Arrows are
   `aria-hidden` - they are punctuation, not content.
 - **`.split`**: text beside an illustration, one band down from the hero;
-  `.split--narrow` gives the image a narrower column and caps it at 300px, for
-  a square vignette that would otherwise set the height of the band. Both
-  collapse to one column at 780px.
+  `code.html` is the only page using it. `.split--narrow` gives the image a
+  narrower column and caps it at 300px, for a square vignette that would
+  otherwise set the height of the band; no page uses it since the Souveränität
+  vignette was cut, and the rule is kept for the next one. Both collapse to one
+  column at 780px.
 - **`.icon`**: the 30px glyph, coloured from `--accent`; `.card .icon` and
   `.hero .icon` only set its bottom margin.
 - **`.card--quiet`**: a card with no border on a `--surface` tint and a
@@ -434,15 +538,13 @@ before adding a class - most sections need nothing new.
   `.hero-art`, `.btn` / `.btn--quiet` / `.btn-row` / `.arrow`, the form controls
   (`.form`, `.field`, `.label`, `.input`, `.choices`, `.choice`,
   `.form-actions`, `.form-status` with `.is-shown` / `.is-ok` / `.is-error`,
-  `.hp`), and the story's `.act`, `.panels`,
-  `.panel`, `.panel--wide`, `.ph`, `.cast`.
+  `.hp`), and the story's `.act`, `.comic`, `.ph`, `.script`, `.cast`.
 - **Grids** are written `repeat(auto-fit, minmax(min(100%, Npx), 1fr))`: the
   `min(100%, …)` is what lets a track collapse below `N` instead of overflowing,
   so keep it when adding one.
 - **Breakpoints**, all of them: 1000px (nav takes its own row), 780px (a split
   hero stacks), 700px (nav becomes the hamburger panel, and the screenshot
-  frame scrolls), 620px (story panels go one column, and the stack's label
-  column stacks). Plus `pointer: coarse` for touch padding on the three link rows, a
+  frame scrolls), 620px (the stack's label column stacks). Plus `pointer: coarse` for touch padding on the three link rows, a
   `print` block, and `prefers-reduced-motion` for the smooth scroll.
 - **Page-wide guards** that only matter on a narrow viewport:
   `-webkit-text-size-adjust: 100%`, `overflow-wrap: break-word` and
@@ -478,17 +580,18 @@ resolves `#contact` against a target that already exists.
 - `assets/img/` - mascot artwork and icons. Pages reference the `.webp`
   renditions; the `.png`/`.jpeg` masters have been removed, so re-encoding a
   rendition means re-exporting its source first, then `magick <src> -resize
-  <w>x\> -strip tmp.png && cwebp -q 82 -alpha_q 90 -m 6`. `keera-og-image.jpg`
+<w>x\> -strip tmp.png && cwebp -q 82 -alpha_q 90 -m 6`. `keera-og-image.jpg`
   is the 1200×630 social card and `keera-apple-touch-icon.png` the 180×180 iOS
-  icon. Nine renditions are currently unused and are fair game for a new
+  icon. Eleven renditions are currently unused and are fair game for a new
   section: `keera-mascot-full-figure`,
   `keera-the-swiss-sovereign-coding-agent-mascot` (the previous home hero),
   `keera-coding-in-a-server-room` (the previous Keera Code hero),
-  `keera-routing-requests-in-a-swiss-control-room` (the previous Keera Gateway
-  hero), `keera-firing-an-energy-beam`,
+  `keera-firing-an-energy-beam`,
   `keera-at-a-dashboard-of-dials-and-gauges`,
-  `keera-redacting-confidential-data`,
-  `keera-routing-data-centre-waste-heat-to-a-town` and
+  `keera-redacting-confidential-data`, `keera-at-a-checkpoint-gate`,
+  `keera-routing-data-centre-waste-heat-to-a-town`,
+  `keera-holding-a-key-in-a-swiss-data-centre` (the previous Souveränität hero),
+  `keera-routing-requests-in-a-swiss-control-room` and
   `keera-gateway-sessions-light`. Artwork is plain `<img>` everywhere -
   `width`/`height` from the file's own pixel size, `alt`, `decoding="async"`,
   and either `loading="lazy"` or, for the hero images, `fetchpriority="high"`.

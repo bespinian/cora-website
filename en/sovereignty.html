@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sovereignty - how Keera is built</title>
+    <title>Sovereignty - every request under your control</title>
     <meta
       name="description"
-      content="Open weights, Swiss operation, no failover abroad. Documented layer by layer."
+      content="One endpoint every AI request passes through. Open weights, Swiss operation, no failover abroad."
     />
     <link rel="canonical" href="https://keera.ch/en/sovereignty.html" />
     <link
@@ -62,10 +62,13 @@
     <meta property="og:site_name" content="Keera Stack" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content="https://keera.ch/en/sovereignty.html" />
-    <meta property="og:title" content="Sovereignty - how Keera is built" />
+    <meta
+      property="og:title"
+      content="Sovereignty - every request under your control"
+    />
     <meta
       property="og:description"
-      content="Open weights, Swiss operation, no failover abroad. Documented layer by layer."
+      content="One endpoint every AI request passes through. Open weights, Swiss operation, no failover abroad."
     />
     <meta
       property="og:image"
@@ -79,10 +82,13 @@
       content="Keera, the mascot of the sovereign Swiss coding agent"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sovereignty - how Keera is built" />
+    <meta
+      name="twitter:title"
+      content="Sovereignty - every request under your control"
+    />
     <meta
       name="twitter:description"
-      content="Open weights, Swiss operation, no failover abroad. Documented layer by layer."
+      content="One endpoint every AI request passes through. Open weights, Swiss operation, no failover abroad."
     />
     <meta
       name="twitter:image"
@@ -162,22 +168,23 @@
         <div class="wrap">
           <div>
             <p class="eyebrow">Sovereignty</p>
-            <h1>Your code has nowhere else to be</h1>
+            <h1>One door out, and you hold the key</h1>
             <p class="lede">
-              Sovereignty is not a promise in a contract. It is an architecture
-              with no foreign dependency to fail over to. This page shows ours,
+              Sovereignty is not a promise in a contract. It is an endpoint
+              every AI request in your company passes through, and behind it an
+              architecture with no foreign dependency. This page shows both,
               layer by layer.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Try Keera</a>
             </p>
           </div>
-          <figure class="hero-art hero-art--framed">
+          <figure class="hero-art">
             <img
-              src="../assets/img/keera-holding-a-key-in-a-swiss-data-centre.webp"
-              width="1376"
-              height="768"
-              alt="Keera holding a key in a Swiss data centre"
+              src="../assets/img/keera-plugging-a-cable-into-a-server-rack.webp"
+              width="900"
+              height="675"
+              alt="Keera plugging a cable into a server rack in a data centre"
               fetchpriority="high"
               decoding="async"
             />
@@ -189,6 +196,10 @@
         <div class="wrap">
           <div class="prose">
             <h2>Layer by layer</h2>
+            <p>
+              Keera Gateway sits on top - the one place your rules are enforced.
+              Nothing underneath it can route around them.
+            </p>
           </div>
           <div class="table-wrap">
             <table>
@@ -200,6 +211,30 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <th scope="row">The endpoint</th>
+                  <td>
+                    Your versioned policy decides, per request, which model sees
+                    it. OpenAI-compatible, so it can be swapped out.
+                  </td>
+                  <td class="tight">your tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Your data</th>
+                  <td>
+                    Prompts and repository context live in the session only.
+                    Secrets and personal data drop out at the gateway.
+                  </td>
+                  <td class="tight">your tenant</td>
+                </tr>
+                <tr>
+                  <th scope="row">Audit log</th>
+                  <td>
+                    Every request with identity, model and decision. It is
+                    yours, it goes to your SIEM, never a copy abroad.
+                  </td>
+                  <td class="tight">CH only</td>
+                </tr>
                 <tr>
                   <th scope="row">Model weights</th>
                   <td>
@@ -214,22 +249,6 @@
                     capacity.
                   </td>
                   <td class="tight">Switzerland</td>
-                </tr>
-                <tr>
-                  <th scope="row">Your code</th>
-                  <td>
-                    In memory for the session only. Anything persisted is
-                    encrypted with your keys.
-                  </td>
-                  <td class="tight">your tenant</td>
-                </tr>
-                <tr>
-                  <th scope="row">Logs and backups</th>
-                  <td>
-                    The audit logs are yours. Geo-redundant, but never a replica
-                    abroad.
-                  </td>
-                  <td class="tight">CH only</td>
                 </tr>
                 <tr>
                   <th scope="row">Support access</th>
@@ -252,10 +271,11 @@
           </div>
           <div class="facts">
             <div>
-              <h3>Can you keep working if the provider disappears tomorrow?</h3>
+              <h3>Do you know what your company sent to an AI yesterday?</h3>
               <p>
-                With Keera, yes: the weights are Apache-2.0, the runtime ships
-                as a Helm chart, and the escrow agreement hands you both.
+                With the gateway you do. Block direct egress at the proxy, and
+                every request is in the log - instead of in a private account
+                with a provider abroad.
               </p>
             </div>
             <div>
@@ -266,10 +286,10 @@
               </p>
             </div>
             <div>
-              <h3>Where does capacity come from at peak?</h3>
+              <h3>Can you keep working if the provider disappears tomorrow?</h3>
               <p>
-                From reserved Swiss GPUs. Requests queue instead of failing over
-                abroad. It is written into the SLA.
+                With Keera, yes: the gateway ships as a Helm chart, the weights
+                are Apache-2.0, and the escrow agreement hands you both.
               </p>
             </div>
           </div>
@@ -279,6 +299,26 @@
       <section class="band">
         <div class="wrap">
           <div class="prose">
+            <h2>Sovereign does not mean sealed off</h2>
+            <p>
+              Sometimes a team needs a model that only exists abroad. The
+              gateway turns that into a decision rather than a risk: you release
+              it per team and data class, and what may not leave never reaches
+              the border.
+            </p>
+            <p>
+              At peak, requests queue in Switzerland instead of quietly failing
+              over abroad - it is written into the SLA. And because the address
+              stays the same, you change the route without touching a single
+              application.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--alt">
+        <div class="wrap">
+          <div class="prose">
             <h2>Built from open source</h2>
             <p>
               Keera is not a black box. Your security team can read what runs on
@@ -286,13 +326,16 @@
             </p>
             <ul class="plain-list">
               <li>
+                <strong>Keera Gateway</strong> - a Helm chart in your cluster,
+                with an OpenAI-compatible API
+              </li>
+              <li>
                 <strong>Qwen-Coder and Apertus</strong> - open-weight models,
                 Apache-2.0
               </li>
-              <li><strong>vLLM</strong> - high-throughput inference serving</li>
               <li>
-                <strong>llm-d on Kubernetes</strong> - scheduling and routing,
-                shipped as Helm charts
+                <strong>vLLM and llm-d on Kubernetes</strong> - inference
+                serving, scheduling and routing
               </li>
             </ul>
             <p>
@@ -303,14 +346,14 @@
         </div>
       </section>
 
-      <section class="band band--alt">
+      <section class="band">
         <div class="wrap">
           <div class="prose">
             <h2>Send us your risk questionnaire</h2>
             <p>
-              We answer it in full before the first workshop. ISO 27001, revDSG
-              mapping, FINMA documentation and EU AI Act material are available
-              on request.
+              We answer it in full before the first workshop - including the
+              questions where the answer is “not yet”. Architecture, operations
+              and data flows, laid out the way they are today.
             </p>
             <p class="btn-row">
               <a class="btn" href="./#contact">Get in touch</a>

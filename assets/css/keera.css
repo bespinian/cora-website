@@ -71,6 +71,10 @@
   /* The invented corporation's red, and the one colour here that names nothing
      on the page but the two brand marks in #omnivor. */
   --omnivor: #c0271d;
+  /* The green the sustainability pages run their whole accent in, and the only
+     green on the site. It is not a second accent loose in the palette: nothing
+     reads it but the .theme-leaf block below. */
+  --leaf: #1d7a44;
   --sans:
     "Space Grotesk", -apple-system, BlinkMacSystemFont, Helvetica, Arial,
     sans-serif;
@@ -83,7 +87,7 @@
 /* Dark scheme. It follows the system setting only - there is no toggle, and
    adding one would mean JavaScript and a stored preference on a site that
    currently ships neither. The artwork is left alone: the mascot is a
-   transparent PNG-alpha webp and sits on the dark ground, and the comic panels
+   transparent PNG-alpha webp and sits on the dark ground, and the comic pages
    and the screenshot are framed images that carry their own light. */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -99,6 +103,23 @@
     --ok: #4ade80;
     --err: #ff9c93;
     --omnivor: #ff8f83;
+    --leaf: #5fd08a;
+  }
+}
+
+/* The sustainability pages, and only those, run the accent green: <body
+   class="theme-leaf">. The page argues about clean power, so the colour it is
+   drawn in is part of the argument rather than decoration. It is a swap, not an
+   addition - no page shows blue and green at once - which is what keeps the
+   one-accent rule intact. --accent picks up whichever --leaf the scheme is
+   already using, so only the hover shade needs saying twice. */
+.theme-leaf {
+  --accent: var(--leaf);
+  --accent-hover: #16603a;
+}
+@media (prefers-color-scheme: dark) {
+  .theme-leaf {
+    --accent-hover: #8ee0ae;
   }
 }
 
@@ -516,7 +537,7 @@ strong {
 /* The two brand marks in #omnivor on the sustainability pages. Not part of the
    five-glyph icon set: these are filled marks in each side's own colour, and
    they are built from the same two parts on purpose, so the shapes carry the
-   contrast - Keera's K is open with the square in its throat, Omnivor's O is
+   contrast - Keera's C is open with the square at its mouth, Omnivor's O is
    closed with the square sealed inside. Each sits inside its own <h3>, to the
    left of the name, so the mark and the name read as one line - which is why
    this one is 26px where the product icons above a name are 30px. */
@@ -524,6 +545,31 @@ strong {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+/* The same row for the leaf beside the #partners <h2>: the one glyph that sits
+   left of a section heading rather than above a name. It aligns to the top
+   rather than the middle because an <h2> in a 34rem column wraps to two lines
+   and a leaf centred against both would float beside neither; at 1.15em its box
+   is within a hair of the first line's, so flex-start lands it on that line. It
+   is sized in em for the same reason - the heading itself is a clamp. */
+.icon-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.icon-head > .icon {
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+}
+/* This is the one <h2> on the site that sits outside .prose, as a child of
+   .wrap: the 34rem reading measure is for paragraphs, and at 31px it is 30px
+   short of holding "Wie wir Infrastruktur-Partner wählen" and the leaf on one
+   line. Lifting it out puts it under .band > .wrap > * + *, which is the 28px
+   band rhythm rather than the 14px a heading wants over its own paragraph, so
+   the gap is restated here. */
+.icon-head + .prose {
+  margin-top: 14px;
 }
 .logo {
   flex: none;
@@ -836,54 +882,50 @@ td.tight {
   margin-top: 14px;
   color: var(--muted);
 }
-.panels {
-  display: grid;
-  gap: clamp(24px, 3vw, 32px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.panel {
+/* One comic page per act: four rendered pages replaced the 24 single-panel
+   slots. The page is capped below its own pixel width so the lettering stays
+   sharp, and the narration survives as a per-page transcript in the
+   figcaption - a screen reader cannot read text baked into artwork, and the
+   captions are what carry the story's cross-references between panels. */
+.comic {
   margin: 0;
-}
-.panel--wide {
-  grid-column: 1 / -1;
   max-width: 860px;
 }
-.panel img,
-.panel .ph {
+.comic img {
+  display: block;
   width: 100%;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
 }
-.panel img {
-  display: block;
-  border: 1px solid var(--line);
-}
-.ph {
-  border: 1px dashed var(--line);
-  background: var(--surface);
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-}
-.panel--wide .ph {
-  aspect-ratio: 16 / 9;
-}
-.panel figcaption {
-  margin-top: 12px;
+.comic figcaption {
+  margin-top: 14px;
   font-size: 16px;
   color: var(--muted);
 }
-.panel figcaption b {
+.comic summary {
+  cursor: pointer;
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--ink);
-  margin-right: 8px;
+}
+/* decimal-leading-zero reproduces the 01-24 numbering the artwork itself
+   letters, and `start` on each <ol> keeps a page's transcript on its own
+   numbers - act IV's captions refer back to panels 05, 12 and 16 by number. */
+.script {
+  margin: 16px 0 0;
+  padding-left: 2.6em;
+  max-width: var(--prose);
+  list-style: decimal-leading-zero;
+}
+.script li + li {
+  margin-top: 10px;
+}
+.script li::marker {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
 }
 .cast {
   display: grid;
@@ -905,7 +947,6 @@ td.tight {
   font-size: 16px;
 }
 @media (max-width: 620px) {
-  .panels,
   .facts--four {
     grid-template-columns: 1fr;
   }
@@ -1045,6 +1086,7 @@ textarea.input {
     --accent: #1657c8;
     --btn-ink: #ffffff;
     --omnivor: #c0271d;
+    --leaf: #1d7a44;
   }
   .site-header,
   .site-footer,
