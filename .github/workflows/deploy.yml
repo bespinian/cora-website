@@ -1,0 +1,55 @@
+# Deploys the static site to the Infomaniak web host over FTP
+name: Deploy static content via FTP
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "ftp-deploy"
+  cancel-in-progress: false
+
+env:
+  FTP_HOST: h2park-8d750cc5.infomaniak.ch
+  FTP_PORT: "21"
+  FTP_USER: z27etf_github
+  REMOTE_DIR: "."
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install lftp
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp
+
+      - name: Deploy via FTP
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -c "
+            set net:max-retries 3;
+            set net:timeout 20;
+            set ftp:ssl-allow false;
+            open -u '$FTP_USER' --env-password ftp://$FTP_HOST:$FTP_PORT;
+            mirror --reverse --delete --verbose --no-perms --parallel=2 \
+              --exclude '^\.git' \
+              --exclude '^AGENTS\.md$' \
+              --exclude '^README\.md$' \
+              --exclude '^\.ftpquota$' \
+              --exclude '^\.well-known/' \
+              ./ $REMOTE_DIR;
+          "

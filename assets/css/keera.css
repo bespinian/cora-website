@@ -453,10 +453,6 @@ strong {
   width: 100%;
   border-radius: var(--radius);
 }
-.hero-art--framed img {
-  border: 1px solid var(--line);
-  background: var(--surface);
-}
 @media (max-width: 780px) {
   .hero--split .wrap {
     grid-template-columns: 1fr;
@@ -767,18 +763,8 @@ strong {
   align-items: center;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
 }
-.split--narrow {
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-}
-/* A square vignette next to two lines of text would otherwise set the height
-   of the whole band. */
-.split--narrow .figure {
-  max-width: 300px;
-  margin-left: auto;
-}
 @media (max-width: 780px) {
-  .split,
-  .split--narrow {
+  .split {
     grid-template-columns: 1fr;
   }
   .split .figure {
@@ -854,6 +840,11 @@ td.tight {
 }
 .figure figcaption {
   margin-top: 10px;
+}
+/* Cut-out artwork sits on the page background with no edge of its own - a
+   border would frame the transparency, not the image. */
+.figure--plain img {
+  border: 0;
 }
 /* The gateway screenshot is 1920px of small UI type: below 700px it scrolls
    sideways instead of shrinking into a grey smudge. The scrollbar is left

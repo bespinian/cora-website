@@ -12,8 +12,16 @@ Edit the HTML by hand. A change to a page's shell - header, footer, contact
 form, metadata - has to be made in all three language copies; `AGENTS.md` has
 the details, along with the content and design rules the pages are written to.
 
-## Deploy on GitHub Pages
+## Deploy over SFTP
 
-1. Push the contents of this folder to a repo (root or a `docs/` folder).
-2. Settings → Pages → Source: "Deploy from a branch", pick the branch and folder.
-3. `index.html` is the home page; `.nojekyll` keeps Jekyll from touching the files.
+`.github/workflows/deploy.yml` mirrors the repo onto the Infomaniak host on
+every push to `main` (and on manual dispatch), using `lftp` over SFTP.
+
+- Host: `h2park-8d750cc5.infomaniak.ch` port 21, user `z27etf_github`.
+- Add the password as the repository secret `SFTP_PASSWORD`
+  (Settings -> Secrets and variables -> Actions).
+- `REMOTE_DIR` is `.`; change it in the workflow if the SFTP user does not land
+  directly in the site's document root.
+- The mirror runs with `--delete`, so a file removed here is removed on the
+  host. Only the site files are uploaded - `.git*`, `AGENTS.md`, `README.md`
+  and `.well-known/` are excluded.

@@ -44,7 +44,8 @@ The site was rebuilt to be read, not admired. Keep it that way:
   (`keera-plugging-a-cable-into-a-server-rack.webp`, from `data-center.png`),
   and every other page leads with one illustration of its own. All four of those
   heroes are cut-outs on transparent ground, so they sit in a bare `.hero-art`
-  figure; only artwork with its own background takes `.hero-art--framed`.
+  figure. Artwork with its own background would need a border and a surface
+  tint under it; the rule that did that was dropped once no page used it.
 - **Let the visuals carry it.** Now that the copy is short, a diagram or an
   illustration is the faster read, so each product page gets one diagram and
   two images rather than another paragraph. A diagram has to say something the
@@ -74,19 +75,20 @@ the interest checkboxes in the form, the sitemap, and the sentence that opens
 the home page. Keep new lists in that order.
 
 - `gateway.html` - Keera Gateway: hero, the request-flow diagram
-  (`#architecture`), the web UI shot, four things it controls (`#security`,
-  cards only - the checkpoint-gate vignette that used to sit beside them is
-  gone), the six features (`#features`), the form. Its only illustration is the
+  (`#architecture`), four things it controls (`#security`, cards only - the
+  checkpoint-gate vignette that used to sit beside them is gone), the web UI
+  shot, the six features (`#features`), the form. Its only illustration is the
   hero; the dashboard shot stays because the section is written off its pixels.
   `#security` and `#features` are the same page twice at two altitudes and have
   to stay that way round: `#security` is what the endpoint decides for the
-  business, `#features` is what the product is made of - guardrails, filters,
-  routers, the live map, sessions, SSO and roles, one `.card` each in a `.grid`
-  on a `band--alt`. It is the one six-card section on the site, which is why it
-  is also the one that gets no second sentence of framing: three or four cards
-  is the rule everywhere else. The six names are the gateway's own, so a card
-  renamed here is a screen renamed in the product; check the gateway repo before
-  rewording one. No icons - the set is closed at eight glyphs per language.
+  business, `#features` is what the product is made of - guardrails, smart
+  filters, smart routers, the live map, sessions, SSO and roles, one `.card`
+  each in a `.grid` on a `band--alt`. It is the one six-card section on the
+  site, which is why it is also the one that gets no second sentence of framing:
+  three or four cards is the rule everywhere else. The six names are the
+  gateway's own, so a card renamed here is a screen renamed in the product;
+  check the gateway repo before rewording one. No icons - the set is closed at
+  eight glyphs per language.
 - `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
   illustration), the form.
@@ -132,7 +134,7 @@ single page and it is built differently from the eighteen:
   not found · Page introuvable") so no language is privileged in the prose.
 - Header, footer and nav labels stay German, matching `x-default`. There is no
   form, so it does not load `contact-form.js`. It uses
-  `keera-mascot-full-figure.webp` and adds no CSS of its own.
+  `keera-coding-on-a-laptop.webp` and adds no CSS of its own.
 
 ## Languages
 
@@ -398,7 +400,7 @@ section.
 
 `#models` on `code.html` runs one table - `MODELL / KONTEXT / IDEAL FÜR`, three
 Keera models and the customer's own fine-tune - followed by one sentence naming
-the upstreams (Qwen3-Coder, Apertus) and the Apache-2.0 licence, and one mono
+the upstreams (Qwen-Coder, Apertus) and the Apache-2.0 licence, and one mono
 footnote about hosted providers.
 
 That footnote is load-bearing and replaces what used to be a second table: the
@@ -411,7 +413,7 @@ two pages move together.
 
 ## Gateway web UI screenshot
 
-`#web-ui` on the three `gateway.html` copies sits between the flow and the
+`#web-ui` on the three `gateway.html` copies sits between `#security` and the
 feature list: a heading, two paragraphs written off the pixels (the metric tiles,
 the columns, the served/refused status, the nav groups), the shot in a bordered
 `figure.figure--shot`, and a mono caption. The first paragraph is the control
@@ -424,8 +426,9 @@ paragraphs. The caption says out loud that the figures come from a demo instance
 which is what stops `0.00 CHF` reading as a claim.
 
 Only the dark shot ships (`keera-gateway-sessions-dark.webp`, 1920×952). The
-light one and the two-radio no-JS toggle that switched between them are gone;
-two dashboards were more chrome than the section could pay for. Below 700px the
+light one and the two-radio no-JS toggle that switched between them are gone -
+the rendition has been deleted too; two dashboards were more chrome than the
+section could pay for. Re-adding a light shot means re-shooting it. Below 700px the
 frame scrolls sideways rather than shrinking - a 1920px dashboard scaled into a
 phone is a grey smudge.
 
@@ -519,11 +522,9 @@ before adding a class - most sections need nothing new.
   schemes, and stay in source order for a screen reader. Arrows are
   `aria-hidden` - they are punctuation, not content.
 - **`.split`**: text beside an illustration, one band down from the hero;
-  `code.html` is the only page using it. `.split--narrow` gives the image a
-  narrower column and caps it at 300px, for a square vignette that would
-  otherwise set the height of the band; no page uses it since the Souveränität
-  vignette was cut, and the rule is kept for the next one. Both collapse to one
-  column at 780px.
+  `code.html` is the only page using it. Collapses to one column at 780px. A
+  `.split--narrow` modifier once capped the image at 300px for a square
+  vignette; it went with the Souveränität vignette it was written for.
 - **`.icon`**: the 30px glyph, coloured from `--accent`; `.card .icon` and
   `.hero .icon` only set its bottom margin.
 - **`.card--quiet`**: a card with no border on a `--surface` tint and a
@@ -582,17 +583,11 @@ resolves `#contact` against a target that already exists.
   rendition means re-exporting its source first, then `magick <src> -resize
 <w>x\> -strip tmp.png && cwebp -q 82 -alpha_q 90 -m 6`. `keera-og-image.jpg`
   is the 1200×630 social card and `keera-apple-touch-icon.png` the 180×180 iOS
-  icon. Eleven renditions are currently unused and are fair game for a new
-  section: `keera-mascot-full-figure`,
-  `keera-the-swiss-sovereign-coding-agent-mascot` (the previous home hero),
-  `keera-coding-in-a-server-room` (the previous Keera Code hero),
-  `keera-firing-an-energy-beam`,
-  `keera-at-a-dashboard-of-dials-and-gauges`,
-  `keera-redacting-confidential-data`, `keera-at-a-checkpoint-gate`,
-  `keera-routing-data-centre-waste-heat-to-a-town`,
-  `keera-holding-a-key-in-a-swiss-data-centre` (the previous Souveränität hero),
-  `keera-routing-requests-in-a-swiss-control-room` and
-  `keera-gateway-sessions-light`. Artwork is plain `<img>` everywhere -
+  icon. Every rendition in the folder is referenced by a page; the ten that
+  had been sitting unused - previous heroes and never-placed spares - were
+  deleted rather than carried, since the deploy mirrors the whole folder to the
+  host. A new section needs new artwork, encoded from `artwork/` outside this
+  repo. Artwork is plain `<img>` everywhere -
   `width`/`height` from the file's own pixel size, `alt`, `decoding="async"`,
   and either `loading="lazy"` or, for the hero images, `fetchpriority="high"`.
   Crop and corners come from the stylesheet, so a new image needs no rule of its

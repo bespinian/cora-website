@@ -264,42 +264,7 @@
         </div>
       </section>
 
-      <section class="band band--alt" id="web-ui">
-        <div class="wrap">
-          <div class="prose">
-            <h2>Web UI or CLI, the same control</h2>
-            <p>
-              You administer the gateway from a web UI that hides nothing:
-              policies, budgets, teams, models and every single session are a
-              few clicks away. If you would rather type or automate, take the
-              keera CLI - same reach, scriptable, ready for your pipeline. Both
-              write the same versioned policy: what you click in the browser is
-              what the CLI reads, and the other way round.
-            </p>
-            <p>
-              And because every request goes through the same endpoint, you see
-              for the first time what your company really does with LLMs:
-              tokens, cost and refused requests per team, model and period - in
-              the browser or as CSV for your own reporting.
-            </p>
-          </div>
-          <figure class="figure figure--shot">
-            <img
-              src="../assets/img/keera-gateway-sessions-dark.webp"
-              width="1920"
-              height="952"
-              alt="The sessions screen of the Keera Gateway web UI"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption class="note">
-              The Keera Gateway web UI. The figures come from a demo instance.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="band" id="security">
+      <section class="band band--alt" id="security">
         <div class="wrap">
           <div class="prose">
             <h2>Four things it controls</h2>
@@ -340,6 +305,41 @@
           </div>
         </div>
       </section>
+
+      <section class="band" id="web-ui">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Web UI or CLI, the same control</h2>
+            <p>
+              You administer the gateway from a web UI that hides nothing:
+              policies, budgets, teams, models and every single session are a
+              few clicks away. If you would rather type or automate, take the
+              keera CLI - same reach, scriptable, ready for your pipeline. Both
+              write the same versioned policy: what you click in the browser is
+              what the CLI reads, and the other way round.
+            </p>
+            <p>
+              And because every request goes through the same endpoint, you see
+              for the first time what your company really does with LLMs:
+              tokens, cost and refused requests per team, model and period - in
+              the browser or as CSV for your own reporting.
+            </p>
+          </div>
+          <figure class="figure figure--shot">
+            <img
+              src="../assets/img/keera-gateway-sessions-dark.webp"
+              width="1920"
+              height="952"
+              alt="The sessions screen of the Keera Gateway web UI"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="note">
+              The Keera Gateway web UI. The figures come from a demo instance.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
       <section class="band band--alt" id="features">
         <div class="wrap">
           <div class="prose">
@@ -359,7 +359,7 @@
               </p>
             </div>
             <div class="card">
-              <h3>Filters</h3>
+              <h3>Smart Filters</h3>
               <p>
                 A small model reads every request and takes out secrets, client
                 names and personal data - or stops it. Measure in shadow mode
@@ -367,7 +367,7 @@
               </p>
             </div>
             <div class="card">
-              <h3>Routers</h3>
+              <h3>Smart Routers</h3>
               <p>
                 A small model picks which model answers: the fast local one for
                 short edits, the large one only when the task needs it.
