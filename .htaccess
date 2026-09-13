@@ -42,12 +42,16 @@ Options -Indexes
 # mod_expires, so the <IfModule> guard skipped the whole thing silently.
 # mod_headers is loaded, and matches on filename rather than MIME type.
 <IfModule mod_headers.c>
-  # Artwork and fonts are effectively content-addressed: a new illustration
-  # arrives under a new filename rather than replacing one in place. Anything
-  # re-encoded in place has to ship in the same deploy as this file, or the
-  # visitors who cached the old bytes keep them for a year.
+  # A month, not a year, and deliberately not "immutable". None of these
+  # filenames carry a content hash, so the convention is that new artwork
+  # arrives under a new filename - but a year is a punishing sentence for
+  # forgetting, and "immutable" would stop even an explicit reload from
+  # fetching the replacement. Nearly all of the benefit is in the first
+  # repeat visits; someone returning after a month refetching the artwork
+  # once does not notice. Raise this to a year, and add immutable, if these
+  # filenames ever carry a content hash.
   <FilesMatch "\.(webp|jpe?g|png|svg|woff2)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 
   # keera.css and contact-form.js are NOT fingerprinted, so a year would strand
