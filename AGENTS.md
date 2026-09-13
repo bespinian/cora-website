@@ -1,7 +1,10 @@
 # Keera Website
 
 Eighteen hand-written static content pages plus `404.html`, served straight off
-GitHub Pages with no build step. The markup carries classes only; the whole
+an Infomaniak Apache host with no build step - `.github/workflows/deploy.yml`
+mirrors the repo there over FTP on every push to `main`. Response behaviour that
+static files cannot express - the 404, the canonical host, cache lifetimes,
+directory listings off - lives in `.htaccess` at the root. The markup carries classes only; the whole
 design lives in one shared stylesheet, `assets/css/keera.css`, and the only
 JavaScript on the site is `assets/js/contact-form.js`, loaded by the nine pages
 that carry a form.
@@ -77,7 +80,8 @@ the home page. Keep new lists in that order.
 - `gateway.html` - Keera Gateway: hero, the request-flow diagram
   (`#architecture`), four things it controls (`#security`, cards only - the
   checkpoint-gate vignette that used to sit beside them is gone), the web UI
-  shot, the six features (`#features`), the form. Its only illustration is the
+  shot, the six features (`#features`), the eight questions (`#faq`), the
+  form. Its only illustration is the
   hero; the dashboard shot stays because the section is written off its pixels.
   `#security` and `#features` are the same page twice at two altitudes and have
   to stay that way round: `#security` is what the endpoint decides for the
@@ -88,7 +92,8 @@ the home page. Keep new lists in that order.
   three or four cards is the rule everywhere else. The six names are the
   gateway's own, so a card renamed here is a screen renamed in the product;
   check the gateway repo before rewording one. No icons - the set is closed at
-  eight glyphs per language.
+  eight glyphs per language. `#faq` is the last word before the form and the
+  one section that answers rather than asserts - see below.
 - `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
   illustration), the form.
@@ -110,15 +115,21 @@ the home page. Keep new lists in that order.
   it.
 - `story.html` - the comic in four acts, four rendered pages, 24 panels.
 
-`robots.txt`, `sitemap.xml` and `404.html` sit at the root. The sitemap lists all
-eighteen content URLs with `xhtml:link` alternates; regenerate it when a page is
-added. `404.html` is deliberately not in it.
+`robots.txt`, `sitemap.xml`, `404.html` and `.htaccess` sit at the root. The
+sitemap lists all eighteen content URLs with `xhtml:link` alternates and a
+`<lastmod>`; regenerate it when a page is added, and touch the `<lastmod>` of
+any page whose content actually changed. It carries no `<changefreq>` and no
+`<priority>` - Google ignores both, and `<lastmod>` is the one field it reads.
+`404.html` is deliberately not in it.
 
 ## The 404 page
 
-GitHub Pages serves `/404.html` for every missing path in all three language
-trees - there is no way to give `en/` and `fr/` one of their own - so it is a
-single page and it is built differently from the eighteen:
+`ErrorDocument 404 /404.html` in `.htaccess` serves `/404.html` for every missing
+path in all three language trees - there is no way to give `en/` and `fr/` one
+of their own - so it is a single page and it is built differently from the
+eighteen. **Without that line Apache answers with its own stock error page and
+this file is never reached**, which is what happened for as long as the repo
+still assumed it was on GitHub Pages:
 
 - **Every URL in it is root-absolute** (`/assets/...`, `/code.html`, `/`). It is
   rendered under the URL that was requested, so `en/nope.html` would resolve a
@@ -208,7 +219,7 @@ is gone; do not rebuild it.
 
 ## Icons
 
-Five line glyphs, all inline `<svg class="icon">` on a 24 viewBox, all drawn
+Six line glyphs, all inline `<svg class="icon">` on a 24 viewBox, all drawn
 with `stroke="currentColor"` and coloured by CSS - so one piece of markup serves
 both schemes - and all `aria-hidden`, because the name they belong to sits right
 next to them.
@@ -396,6 +407,59 @@ link to the story. The refusal of the climate-neutral claim
 has to survive any rewrite, there and in the story's _what we do not claim_
 section.
 
+## The gateway FAQ
+
+`#faq` sits between `#features` and the form on the three `gateway.html`
+copies, and nowhere else. Eight questions, each a `<details>` the visitor
+opens: a heading, one sentence of framing, then the list in a `.faq`. It is the
+one section that answers a question instead of making a claim, which is why it
+is the last thing before the form.
+
+The order is the argument, and it is not the order the questions arrive in.
+Privacy, security and the AI Act come first because the banking, insurance and
+public-sector reader is buying those; the comparison and Claude Code come next
+because that is what decides adoption; latency, footprint and cloud-native come
+last, as a pair and a coda, because they are the questions that no longer stop
+anyone. Re-sorting it by how often a question is asked would put the overhead
+question on top and bury the privacy answer, which is the page's strongest.
+
+Three answers are load-bearing and must not be softened into a maybe:
+
+- **The prompt answer draws the line at content, not at the record.** The
+  gateway does keep the request - who, when, which model, how many tokens,
+  which decision - and that record is what `#security` and `#web-ui` sell two
+  sections up as the audit log and the cost-per-team figure. What is never
+  stored is the _content_: the prompt and the model's answer. An earlier draft
+  answered a flat "No. Never." to "do you store my prompts and requests" and
+  contradicted the rest of the page; do not let it drift back. The question is
+  about prompts alone for the same reason.
+- **The AI Act answer ends by handing the compliance work back.** "Die
+  Compliance-Arbeit bleibt deine" is the same refusal as the story's _what we do
+  not claim_: the gateway supplies evidence, not a certificate.
+- **The latency answer names its own exception.** The microsecond figure is the
+  path through policy, budget and log. Smart Filters and Smart Routers call a
+  small model and so cost more than that; the answer says so rather than
+  letting `#features` contradict it.
+
+The differentiator answer is the sovereignty argument in miniature - enterprise
+support from us, and no client or library of its own, so the customer stays
+independent "of us as well". Do not rewrite it into a feature comparison
+against a named competitor.
+
+`<details>` is the second disclosure on the site after the story transcripts and
+needs no JavaScript, so the site still ships one script. It keeps its native
+marker: the icon set is closed at eight glyphs and a disclosure triangle is not
+a ninth. The questions are plain `<summary>` text rather than headings inside
+one - the outline gains little and screen readers announce the nesting badly -
+so the JSON-LD below is what carries the Q&A to a crawler.
+
+The eight are mirrored in a `FAQPage` node in each page's JSON-LD `@graph`, and
+**that copy is duplicated prose**: edit an answer in the markup and the `@graph`
+still says the old thing. Regenerate it from the markup rather than retyping it,
+and remember the `<script>` decodes no entities - the French node carries
+literal U+00A0 characters where the prose writes `&nbsp;`, exactly as the French
+`description` does.
+
 ## Models
 
 `#models` on `code.html` runs one table - `MODELL / KONTEXT / IDEAL FÜR`, three
@@ -535,7 +599,8 @@ before adding a class - most sections need nothing new.
   which goes two-up rather than three plus an orphan), `.plain-list`
   (dash-marked list), `.table-wrap` + plain `<table>` (`td.tight` keeps a short
   value like `dein Tenant` on one line; below its `min-width` the wrap
-  scrolls sideways), `.figure`, `.hero` /`.hero--split` /
+  scrolls sideways), `.figure`, `.faq` (the gateway's question list: a
+  hairline-ruled column of `<details>` capped at the prose measure), `.hero` /`.hero--split` /
   `.hero-art`, `.btn` / `.btn--quiet` / `.btn-row` / `.arrow`, the form controls
   (`.form`, `.field`, `.label`, `.input`, `.choices`, `.choice`,
   `.form-actions`, `.form-status` with `.is-shown` / `.is-ok` / `.is-error`,
@@ -604,12 +669,20 @@ whole page is raw HTML, so they see the markup and the metadata alike.
 Every URL in the metadata is absolute `https://keera.ch/...`, so they all need
 updating if the domain changes. Canonicals, `og:url` and the sitemap use the
 directory form for the three home pages - `https://keera.ch/`,
-`/en/`, `/fr/`, not `/index.html` - because that is what GitHub Pages serves and
-what inbound links point to. Internal links match: `href="./"` for the home page
+`/en/`, `/fr/`, not `/index.html` - because that is what the host serves for a
+directory and what inbound links point to. Internal links match: `href="./"` for the home page
 of the current language.
 
 The JSON-LD is one `@graph` per page: `Organization` + `WebSite` on the three
 home pages, `BreadcrumbList` on the subpages, plus a `SoftwareApplication` on
-`code.html` and `gateway.html`. The `Organization` has no `sameAs` yet - add the
-company's social and directory profiles there once they exist; it is the main
-signal that ties the domain to a real entity.
+`code.html` and `gateway.html`, and a `FAQPage` on `gateway.html` alone.
+
+Keera itself still has no social or directory profiles, so its `Organization`
+carries no `sameAs`; the `parentOrganization` node points at bespinian's, which
+is what currently ties the domain to a real entity. Give Keera its own `sameAs`
+the moment it has a profile of its own - only real, verified URLs belong there.
+
+Every page carries its own Open Graph image, 1200x630, built from that page's
+artwork composited on the `#091023` navy of `keera-og-image.jpg`. The home pages
+keep `keera-og-image.jpg`; the rest use `keera-og-<page>.jpg`. `og:image:alt`
+describes the artwork in the page's own language.

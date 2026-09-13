@@ -61,14 +61,14 @@
     />
     <meta
       property="og:image"
-      content="https://keera.ch/assets/img/keera-og-image.jpg"
+      content="https://keera.ch/assets/img/keera-og-gateway.jpg"
     />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Keera, das Maskottchen des souveränen Schweizer Coding-Agenten"
+      content="Keera schreitet durch ein leuchtendes Gateway-Tor"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -81,7 +81,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://keera.ch/assets/img/keera-og-image.jpg"
+      content="https://keera.ch/assets/img/keera-og-gateway.jpg"
     />
     <script type="application/ld+json">
       {
@@ -114,6 +114,75 @@
             "publisher": {
               "@id": "https://keera.ch/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Speichert ihr meine Prompts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nein. Weder der Prompt noch die Antwort des Modells wird gespeichert - der Inhalt läuft durch und ist danach weg. Festgehalten wird die Anfrage selbst: wer, wann, welches Modell, wie viele Tokens, welcher Entscheid. Genau daraus entstehen die Kosten pro Team und der Nachweis, und das Log liegt in deiner Infrastruktur."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Macht uns das Gateway sicherer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja, vor allem über die Schlüssel. Die API-Schlüssel für alle Modelle liegen an einem Ort statt verstreut in .env-Dateien, CI-Secrets und auf Laptops. Du gibst sie pro Team frei und ziehst sie an einem Ort zurück. Deine Anwendungen bekommen den echten Schlüssel nie zu sehen."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hilft es mir beim EU AI Act?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Der AI Act verlangt, dass du belegen kannst, was dein Unternehmen mit KI tut. Das Gateway protokolliert jede Anfrage mit Identität, Modell und Entscheid und zeigt dir Nutzung und Kosten pro Team. Die Belege sind da, wenn jemand fragt. Die Compliance-Arbeit bleibt deine."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wie unterscheidet es sich von anderen AI Gateways?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In zwei Punkten. Erstens bekommst du Enterprise-Support direkt von uns, mit einem Ansprechpartner in der Schweiz. Zweitens braucht es keinen eigenen Client und keine eigene Library: deine Tools sprechen weiter die APIs, die sie schon sprechen, und du änderst eine Base-URL. Das hält dich unabhängig - auch von uns."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Läuft Claude Code damit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Das Gateway spricht die OpenAI- und die Anthropic-API. Claude Code, dein eigener Agent, eine interne App oder ein Notebook zeigen auf die Base-URL des Gateways und laufen weiter wie vorher."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Kostet das Latenz?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sehr wenig. Der Weg durch Policy, Budget und Log kostet Mikrosekunden - neben einer Modellantwort, die Sekunden dauert, fällt das nicht auf. Nur wer Smart Filters oder Smart Routers einschaltet, kauft sich den kleinen Modellaufruf bewusst dazu."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Ist es leichtgewichtig?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Es braucht sehr wenig Arbeitsspeicher und ist schnell. Keine schwere Laufzeit, keine Datenbank-Farm davor - du stellst es neben deine Anwendungen, ohne dafür eine eigene Plattform zu bauen."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Ist es cloud-native?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja, Cloud und Kubernetes sind sein Zuhause. Es läuft als Container, skaliert horizontal und nimmt seine Konfiguration aus dem Cluster. In deiner Cloud, in deinem Cluster oder im eigenen Rechenzentrum ist es dieselbe Software."
+                }
+              }
+            ]
           }
         ]
       }
@@ -392,6 +461,98 @@
                 Verzeichnisgruppen. Jede Änderung steht im Audit-Log.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="band" id="faq">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Häufige Fragen</h2>
+            <p>
+              Das fragen uns Teams am häufigsten, bevor sie das Gateway
+              aufsetzen.
+            </p>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Speichert ihr meine Prompts?</summary>
+              <p>
+                Nein. Weder der Prompt noch die Antwort des Modells wird
+                gespeichert - der Inhalt läuft durch und ist danach weg.
+                Festgehalten wird die Anfrage selbst: wer, wann, welches Modell,
+                wie viele Tokens, welcher Entscheid. Genau daraus entstehen die
+                Kosten pro Team und der Nachweis, und das Log liegt in deiner
+                Infrastruktur.
+              </p>
+            </details>
+            <details>
+              <summary>Macht uns das Gateway sicherer?</summary>
+              <p>
+                Ja, vor allem über die Schlüssel. Die API-Schlüssel für alle
+                Modelle liegen an einem Ort statt verstreut in .env-Dateien,
+                CI-Secrets und auf Laptops. Du gibst sie pro Team frei und
+                ziehst sie an einem Ort zurück. Deine Anwendungen bekommen den
+                echten Schlüssel nie zu sehen.
+              </p>
+            </details>
+            <details>
+              <summary>Hilft es mir beim EU AI Act?</summary>
+              <p>
+                Ja. Der AI Act verlangt, dass du belegen kannst, was dein
+                Unternehmen mit KI tut. Das Gateway protokolliert jede Anfrage
+                mit Identität, Modell und Entscheid und zeigt dir Nutzung und
+                Kosten pro Team. Die Belege sind da, wenn jemand fragt. Die
+                Compliance-Arbeit bleibt deine.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Wie unterscheidet es sich von anderen AI Gateways?
+              </summary>
+              <p>
+                In zwei Punkten. Erstens bekommst du Enterprise-Support direkt
+                von uns, mit einem Ansprechpartner in der Schweiz. Zweitens
+                braucht es keinen eigenen Client und keine eigene Library: deine
+                Tools sprechen weiter die APIs, die sie schon sprechen, und du
+                änderst eine Base-URL. Das hält dich unabhängig - auch von uns.
+              </p>
+            </details>
+            <details>
+              <summary>Läuft Claude Code damit?</summary>
+              <p>
+                Ja. Das Gateway spricht die OpenAI- und die Anthropic-API.
+                Claude Code, dein eigener Agent, eine interne App oder ein
+                Notebook zeigen auf die Base-URL des Gateways und laufen weiter
+                wie vorher.
+              </p>
+            </details>
+            <details>
+              <summary>Kostet das Latenz?</summary>
+              <p>
+                Sehr wenig. Der Weg durch Policy, Budget und Log kostet
+                Mikrosekunden - neben einer Modellantwort, die Sekunden dauert,
+                fällt das nicht auf. Nur wer Smart Filters oder Smart Routers
+                einschaltet, kauft sich den kleinen Modellaufruf bewusst dazu.
+              </p>
+            </details>
+            <details>
+              <summary>Ist es leichtgewichtig?</summary>
+              <p>
+                Ja. Es braucht sehr wenig Arbeitsspeicher und ist schnell. Keine
+                schwere Laufzeit, keine Datenbank-Farm davor - du stellst es
+                neben deine Anwendungen, ohne dafür eine eigene Plattform zu
+                bauen.
+              </p>
+            </details>
+            <details>
+              <summary>Ist es cloud-native?</summary>
+              <p>
+                Ja, Cloud und Kubernetes sind sein Zuhause. Es läuft als
+                Container, skaliert horizontal und nimmt seine Konfiguration aus
+                dem Cluster. In deiner Cloud, in deinem Cluster oder im eigenen
+                Rechenzentrum ist es dieselbe Software.
+              </p>
+            </details>
           </div>
         </div>
       </section>

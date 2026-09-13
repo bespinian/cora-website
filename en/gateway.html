@@ -68,14 +68,14 @@
     />
     <meta
       property="og:image"
-      content="https://keera.ch/assets/img/keera-og-image.jpg"
+      content="https://keera.ch/assets/img/keera-og-gateway.jpg"
     />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Keera, the mascot of the sovereign Swiss coding agent"
+      content="Keera walking through a glowing gateway"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -88,7 +88,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://keera.ch/assets/img/keera-og-image.jpg"
+      content="https://keera.ch/assets/img/keera-og-gateway.jpg"
     />
     <script type="application/ld+json">
       {
@@ -121,6 +121,75 @@
             "publisher": {
               "@id": "https://keera.ch/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Do you store my prompts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Neither the prompt nor the model's answer is stored - the content passes through and is then gone. What is kept is the request itself: who, when, which model, how many tokens, which decision. That is what gives you cost per team and an audit trail, and the log sits in your infrastructure."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it make us more secure?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, mostly through the keys. The API keys for every model sit in one place instead of scattered across .env files, CI secrets and laptops. You grant them per team and revoke them in one place. Your applications never see the real key."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it help me with the EU AI Act?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The AI Act asks you to show what your company does with AI. The gateway logs every request with identity, model and decision, and shows you usage and cost per team. The evidence is there when somebody asks. The compliance work stays yours."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How is it different from other AI gateways?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In two ways. First, you get enterprise support directly from us, with someone to talk to in Switzerland. Second, it needs no special client and no library of its own: your tools keep speaking the APIs they already speak, and you change one base URL. That keeps you independent - of us as well."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Claude Code work with it?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The gateway speaks the OpenAI and the Anthropic API. Claude Code, your own agent, an internal app or a notebook point at the gateway's base URL and carry on as before."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it add latency?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Very little. The path through policy, budget and log costs microseconds - next to a model answer that takes seconds, nobody notices. Only Smart Filters and Smart Routers add a small model call, and you switch those on yourself."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is it lightweight?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. It uses very little memory and it is fast. No heavy runtime, no farm of services in front of it - you put it next to your applications without building a platform for it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is it cloud native?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, cloud and Kubernetes are its home. It runs as a container, scales horizontally and takes its configuration from the cluster. In your cloud, in your cluster or in your own data centre it is the same software."
+                }
+              }
+            ]
           }
         ]
       }
@@ -396,6 +465,88 @@
                 your directory groups. Every change goes into the audit log.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="band" id="faq">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Common questions</h2>
+            <p>What teams ask us most before they set the gateway up.</p>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Do you store my prompts?</summary>
+              <p>
+                No. Neither the prompt nor the model's answer is stored - the
+                content passes through and is then gone. What is kept is the
+                request itself: who, when, which model, how many tokens, which
+                decision. That is what gives you cost per team and an audit
+                trail, and the log sits in your infrastructure.
+              </p>
+            </details>
+            <details>
+              <summary>Does it make us more secure?</summary>
+              <p>
+                Yes, mostly through the keys. The API keys for every model sit
+                in one place instead of scattered across .env files, CI secrets
+                and laptops. You grant them per team and revoke them in one
+                place. Your applications never see the real key.
+              </p>
+            </details>
+            <details>
+              <summary>Does it help me with the EU AI Act?</summary>
+              <p>
+                Yes. The AI Act asks you to show what your company does with AI.
+                The gateway logs every request with identity, model and
+                decision, and shows you usage and cost per team. The evidence is
+                there when somebody asks. The compliance work stays yours.
+              </p>
+            </details>
+            <details>
+              <summary>How is it different from other AI gateways?</summary>
+              <p>
+                In two ways. First, you get enterprise support directly from us,
+                with someone to talk to in Switzerland. Second, it needs no
+                special client and no library of its own: your tools keep
+                speaking the APIs they already speak, and you change one base
+                URL. That keeps you independent - of us as well.
+              </p>
+            </details>
+            <details>
+              <summary>Does Claude Code work with it?</summary>
+              <p>
+                Yes. The gateway speaks the OpenAI and the Anthropic API. Claude
+                Code, your own agent, an internal app or a notebook point at the
+                gateway's base URL and carry on as before.
+              </p>
+            </details>
+            <details>
+              <summary>Does it add latency?</summary>
+              <p>
+                Very little. The path through policy, budget and log costs
+                microseconds - next to a model answer that takes seconds, nobody
+                notices. Only Smart Filters and Smart Routers add a small model
+                call, and you switch those on yourself.
+              </p>
+            </details>
+            <details>
+              <summary>Is it lightweight?</summary>
+              <p>
+                Yes. It uses very little memory and it is fast. No heavy
+                runtime, no farm of services in front of it - you put it next to
+                your applications without building a platform for it.
+              </p>
+            </details>
+            <details>
+              <summary>Is it cloud native?</summary>
+              <p>
+                Yes, cloud and Kubernetes are its home. It runs as a container,
+                scales horizontally and takes its configuration from the
+                cluster. In your cloud, in your cluster or in your own data
+                centre it is the same software.
+              </p>
+            </details>
           </div>
         </div>
       </section>

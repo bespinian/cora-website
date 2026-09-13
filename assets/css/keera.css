@@ -860,6 +860,38 @@ td.tight {
   }
 }
 
+/* ---------- faq ---------- */
+/* The eight questions at the foot of gateway.html, each a <details> the
+   visitor opens. It is a disclosure and not eight open answers because the
+   list is read by scanning the questions - eight answers at once would bury
+   the form under a wall of prose - and <details> is the one disclosure the
+   site can afford, since it needs no JavaScript. Unlike the header menu it can
+   be a <details>: nothing here has to render open above a breakpoint.
+   The native marker is kept rather than drawn: the icon set is closed at eight
+   glyphs, and a disclosure triangle is punctuation rather than one of them. */
+.faq {
+  max-width: var(--prose);
+  border-top: 1px solid var(--line);
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  cursor: pointer;
+  padding: 14px 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.faq summary:hover {
+  color: var(--accent);
+}
+/* The answer hangs off the summary's own bottom padding, so only the gap under
+   it needs saying. */
+.faq p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
 /* ---------- story ---------- */
 .act {
   padding: clamp(48px, 7vw, 76px) 0;

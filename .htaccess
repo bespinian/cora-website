@@ -1,0 +1,64 @@
+# Apache config for the Infomaniak web host. The site is static files pushed
+# over FTP by .github/workflows/deploy.yml, so this file is the only place a
+# response status, a redirect or a cache lifetime can be set at all.
+
+# --- The custom 404 ------------------------------------------------------
+# Without this line Apache answers every missing path with its own stock
+# "Not Found" page and 404.html is never served. 404.html is built with
+# root-absolute URLs throughout precisely so it renders correctly no matter
+# which path - /nope.html, /en/nope.html, /fr/nope.html - was requested.
+ErrorDocument 404 /404.html
+
+# --- No directory listings -----------------------------------------------
+# /assets/img/ was serving a browsable index of every file in it.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- One host, one protocol ------------------------------------------
+  # Four spellings of every URL were answering 200: http and https, apex and
+  # www. The canonical tags keep that out of the index, but the crawl and any
+  # inbound links still split four ways. These two rules collapse them.
+  #
+  # TLS is terminated upstream, so Apache sees a plain HTTP request on port 80
+  # even when the visitor asked for https - %{HTTPS} is off and %{SERVER_PORT}
+  # is 80 for everything. The proxy's X-Forwarded-Proto is the only honest
+  # signal here, and the test below is deliberately positive (= http rather
+  # than != https): if that header ever stops being sent the rule does nothing,
+  # instead of redirecting https:// to itself forever and taking the site down.
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http
+  RewriteRule ^ https://keera.ch%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www\.keera\.ch$ [NC]
+  RewriteRule ^ https://keera.ch%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# --- Cache lifetimes -----------------------------------------------------
+# Nothing was sending Cache-Control or Expires, so every repeat visit refetched
+# the fonts and the artwork. gzip is already on and needs no help here.
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Pages must stay fresh - they still revalidate cheaply against the ETag.
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Artwork and fonts are effectively content-addressed: a new illustration
+  # arrives under a new filename rather than replacing one in place.
+  ExpiresByType image/webp     "access plus 1 year"
+  ExpiresByType image/jpeg     "access plus 1 year"
+  ExpiresByType image/png      "access plus 1 year"
+  ExpiresByType image/svg+xml  "access plus 1 year"
+  ExpiresByType font/woff2     "access plus 1 year"
+
+  # keera.css and contact-form.js are NOT fingerprinted, so a year would strand
+  # visitors on an old stylesheet. A day is the compromise; raise it to a year
+  # if those filenames ever carry a content hash.
+  ExpiresByType text/css        "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+
+  # robots.txt and sitemap.xml
+  ExpiresByType text/plain      "access plus 1 hour"
+  ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
