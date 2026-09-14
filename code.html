@@ -17,6 +17,17 @@
       hreflang="x-default"
       href="https://keera.ch/code.html"
     />
+    <!-- The LCP element. This host only speaks HTTP/1.1, so the six connections a
+         browser will open are the whole budget and whatever is asked for first
+         gets one first: discovered down in the body, the hero art waited on the
+         fonts and the stylesheet ahead of it. Named here, before them, it claims
+         a connection as soon as the head is parsed. -->
+    <link
+      rel="preload"
+      href="assets/img/keera-coding-on-a-laptop.webp"
+      as="image"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       href="assets/fonts/space-grotesk-latin.woff2"
@@ -106,6 +117,43 @@
             "publisher": {
               "@id": "https://keera.ch/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Bleibt mein Code im Haus?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Die Modelle laufen auf Schweizer GPUs oder in deinen eigenen Racks; dein Code geht zur Inferenz dorthin und wieder zurück. Gespeichert wird er nicht, die Antwort des Modells auch nicht, und trainiert wird damit nichts."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Läuft es in meiner IDE?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CLI, VS Code, JetBrains, headless in der Pipeline. Alles hängt an derselben OpenAI-kompatiblen Base-URL - kein eigener Client, kein neues SDK, kein Plugin, das jemand pflegen muss. Du änderst eine Base-URL und arbeitest weiter wie vorher."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Sind offene Modelle gut genug?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Für die tägliche Arbeit ja: Refactorings über viele Dateien, Tests, Migrationen, Reviews. Beim schwierigsten Reasoning liegen die grossen proprietären Modelle weiter vorn - deshalb hängen sie am selben Gateway und lassen sich pro Team und Datenklasse freigeben. Wir behaupten nicht, dass offene Weights überall gewinnen. Wir behaupten, dass du die Wahl behältst."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wie hängt das mit Keera Gateway zusammen?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Keera Code ist ein Client, Keera Gateway ist der Endpunkt, durch den seine Anfragen laufen: dieselben Policies, dasselbe Audit-Log wie für jede andere KI-Anwendung im Haus. Du kannst mit einem Team auf Keera Code anfangen und das Gateway später vor alles andere ziehen - oder umgekehrt."
+                }
+              }
+            ]
           }
         ]
       }
@@ -339,6 +387,58 @@
                 decoding="async"
               />
             </figure>
+          </div>
+        </div>
+      </section>
+      <section class="band band--alt" id="faq">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Häufige Fragen</h2>
+            <p>
+              Das fragen uns Engineering-Teams am häufigsten, bevor sie Keera
+              Code ausprobieren.
+            </p>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Bleibt mein Code im Haus?</summary>
+              <p>
+                Ja. Die Modelle laufen auf Schweizer GPUs oder in deinen eigenen
+                Racks; dein Code geht zur Inferenz dorthin und wieder zurück.
+                Gespeichert wird er nicht, die Antwort des Modells auch nicht,
+                und trainiert wird damit nichts.
+              </p>
+            </details>
+            <details>
+              <summary>Läuft es in meiner IDE?</summary>
+              <p>
+                CLI, VS Code, JetBrains, headless in der Pipeline. Alles hängt
+                an derselben OpenAI-kompatiblen Base-URL - kein eigener Client,
+                kein neues SDK, kein Plugin, das jemand pflegen muss. Du änderst
+                eine Base-URL und arbeitest weiter wie vorher.
+              </p>
+            </details>
+            <details>
+              <summary>Sind offene Modelle gut genug?</summary>
+              <p>
+                Für die tägliche Arbeit ja: Refactorings über viele Dateien,
+                Tests, Migrationen, Reviews. Beim schwierigsten Reasoning liegen
+                die grossen proprietären Modelle weiter vorn - deshalb hängen
+                sie am selben Gateway und lassen sich pro Team und Datenklasse
+                freigeben. Wir behaupten nicht, dass offene Weights überall
+                gewinnen. Wir behaupten, dass du die Wahl behältst.
+              </p>
+            </details>
+            <details>
+              <summary>Wie hängt das mit Keera Gateway zusammen?</summary>
+              <p>
+                Keera Code ist ein Client, Keera Gateway ist der Endpunkt, durch
+                den seine Anfragen laufen: dieselben Policies, dasselbe
+                Audit-Log wie für jede andere KI-Anwendung im Haus. Du kannst
+                mit einem Team auf Keera Code anfangen und das Gateway später
+                vor alles andere ziehen - oder umgekehrt.
+              </p>
+            </details>
           </div>
         </div>
       </section>

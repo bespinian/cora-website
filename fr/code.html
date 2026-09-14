@@ -17,6 +17,17 @@
       hreflang="x-default"
       href="https://keera.ch/code.html"
     />
+    <!-- The LCP element. This host only speaks HTTP/1.1, so the six connections a
+         browser will open are the whole budget and whatever is asked for first
+         gets one first: discovered down in the body, the hero art waited on the
+         fonts and the stylesheet ahead of it. Named here, before them, it claims
+         a connection as soon as the head is parsed. -->
+    <link
+      rel="preload"
+      href="../assets/img/keera-coding-on-a-laptop.webp"
+      as="image"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       href="../assets/fonts/space-grotesk-latin.woff2"
@@ -113,6 +124,43 @@
             "publisher": {
               "@id": "https://keera.ch/#organization"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Mon code reste-t-il chez moi ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. Les modèles tournent sur des GPU suisses ou dans vos propres baies ; votre code y part pour l'inférence et revient. Il n'est pas conservé, la réponse du modèle non plus, et rien n'est entraîné avec."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Est-ce que cela tourne dans mon IDE ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CLI, VS Code, JetBrains, headless dans la pipeline. Tout passe par la même base URL compatible OpenAI - pas de client maison, pas de nouveau SDK, pas de plugin à maintenir. Vous changez une URL de base et vous continuez comme avant."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Les modèles ouverts sont-ils assez bons ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pour le travail quotidien, oui : refactorings sur de nombreux fichiers, tests, migrations, revues. Sur le raisonnement le plus difficile, les grands modèles propriétaires gardent une avance - c'est pourquoi ils passent par la même passerelle et s'ouvrent par équipe et par classe de données. Nous ne prétendons pas que les poids ouverts gagnent partout. Nous prétendons que le choix vous reste."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quel rapport avec Keera Gateway ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Keera Code est un client, Keera Gateway est le point d'entrée par lequel passent ses requêtes : les mêmes politiques et le même journal d'audit que pour toute autre application d'IA de la maison. Vous pouvez commencer avec une équipe sur Keera Code et placer la passerelle devant le reste plus tard - ou l'inverse."
+                }
+              }
+            ]
           }
         ]
       }
@@ -346,6 +394,60 @@
                 decoding="async"
               />
             </figure>
+          </div>
+        </div>
+      </section>
+      <section class="band band--alt" id="faq">
+        <div class="wrap">
+          <div class="prose">
+            <h2>Questions fréquentes</h2>
+            <p>
+              Ce que les équipes d'ingénierie nous demandent le plus souvent
+              avant d'essayer Keera Code.
+            </p>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Mon code reste-t-il chez moi&nbsp;?</summary>
+              <p>
+                Oui. Les modèles tournent sur des GPU suisses ou dans vos
+                propres baies&nbsp;; votre code y part pour l'inférence et
+                revient. Il n'est pas conservé, la réponse du modèle non plus,
+                et rien n'est entraîné avec.
+              </p>
+            </details>
+            <details>
+              <summary>Est-ce que cela tourne dans mon IDE&nbsp;?</summary>
+              <p>
+                CLI, VS Code, JetBrains, headless dans la pipeline. Tout passe
+                par la même base URL compatible OpenAI&nbsp;- pas de client
+                maison, pas de nouveau SDK, pas de plugin à maintenir. Vous
+                changez une URL de base et vous continuez comme avant.
+              </p>
+            </details>
+            <details>
+              <summary>Les modèles ouverts sont-ils assez bons&nbsp;?</summary>
+              <p>
+                Pour le travail quotidien, oui&nbsp;: refactorings sur de
+                nombreux fichiers, tests, migrations, revues. Sur le
+                raisonnement le plus difficile, les grands modèles propriétaires
+                gardent une avance&nbsp;- c'est pourquoi ils passent par la même
+                passerelle et s'ouvrent par équipe et par classe de données.
+                Nous ne prétendons pas que les poids ouverts gagnent partout.
+                Nous prétendons que le choix vous reste.
+              </p>
+            </details>
+            <details>
+              <summary>Quel rapport avec Keera Gateway&nbsp;?</summary>
+              <p>
+                Keera Code est un client, Keera Gateway est le point d'entrée
+                par lequel passent ses requêtes&nbsp;: les mêmes politiques et
+                le même journal d'audit que pour toute autre application d'IA de
+                la maison. Vous pouvez commencer avec une équipe sur Keera Code
+                et placer la passerelle devant le reste plus tard&nbsp;- ou
+                l'inverse.
+              </p>
+            </details>
           </div>
         </div>
       </section>

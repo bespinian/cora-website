@@ -644,8 +644,9 @@ resolves `#contact` against a target that already exists.
   anything was visible.
 - `assets/fonts/` - JetBrains Mono and Space Grotesk woff2 subsets, `latin` and
   `latin-ext` only. Every head preloads the two `latin` cuts
-  (`<link rel="preload" as="font" type="font/woff2" crossorigin>`, before the
-  stylesheet link): the browser would otherwise only discover them after parsing
+  (`<link rel="preload" as="font" type="font/woff2" crossorigin>`, after the
+  hero image preload and before the stylesheet link): the browser would
+  otherwise only discover them after parsing
   `keera.css`, a round trip that delays first paint. `crossorigin` is required
   even though the files are same-origin - fonts are fetched in anonymous CORS
   mode, and without it the preload is thrown away and fetched a second time. The
@@ -669,7 +670,16 @@ resolves `#contact` against a target that already exists.
   `width`/`height` from the file's own pixel size, `alt`, `decoding="async"`,
   and either `loading="lazy"` or, for the hero images, `fetchpriority="high"`.
   Crop and corners come from the stylesheet, so a new image needs no rule of its
-  own.
+  own. **Every head preloads its own hero image**
+  (`<link rel="preload" as="image" fetchpriority="high">`) as the first hint in
+  the head, ahead of the two font preloads. The host only speaks HTTP/1.1, so
+  the six connections a browser will open are the whole budget and the request
+  made first gets one first; discovered down in the body, the hero art used to
+  queue behind the fonts and the stylesheet, and PageSpeed measured 1.19s of LCP
+  resource load delay against an image that then took 1.83s to arrive. The
+  preload href must match the `<img src>` exactly - deploy stamps both with the
+  same `?v=` hash, and a mismatch would download the image twice. A page that
+  changes its hero changes both.
 
 ## Metadata
 

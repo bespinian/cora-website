@@ -13,6 +13,17 @@
     <link rel="alternate" hreflang="fr" href="https://keera.ch/fr/" />
     <link rel="alternate" hreflang="en" href="https://keera.ch/en/" />
     <link rel="alternate" hreflang="x-default" href="https://keera.ch/" />
+    <!-- The LCP element. This host only speaks HTTP/1.1, so the six connections a
+         browser will open are the whole budget and whatever is asked for first
+         gets one first: discovered down in the body, the hero art waited on the
+         fonts and the stylesheet ahead of it. Named here, before them, it claims
+         a connection as soon as the head is parsed. -->
+    <link
+      rel="preload"
+      href="../assets/img/keera-mascot-with-her-gun.webp"
+      as="image"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       href="../assets/fonts/space-grotesk-latin.woff2"
