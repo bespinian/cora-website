@@ -5,9 +5,10 @@ an Infomaniak Apache host with no build step - `.github/workflows/deploy.yml`
 mirrors the repo there over FTP on every push to `main`. Response behaviour that
 static files cannot express - the 404, the canonical host, cache lifetimes,
 directory listings off - lives in `.htaccess` at the root. The markup carries classes only; the whole
-design lives in one shared stylesheet, `assets/css/keera.css`, and the only
-JavaScript on the site is `assets/js/contact-form.js`, loaded by the nine pages
-that carry a form.
+design lives in one shared stylesheet, `assets/css/keera.css`. Two scripts run
+on the site and no more: `assets/js/contact-form.js` on the nine pages that
+carry a form, and `assets/js/google-tag.js` - the Google Ads tag - on all
+eighteen content pages.
 
 Two things this repo used to be and must not become again: Claude Design decks
 (markup inside `<x-dc>` rendered client-side by React) and pages that style
@@ -96,7 +97,7 @@ the home page. Keep new lists in that order.
   one section that answers rather than asserts - see below.
 - `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
-  illustration), the form.
+  illustration), the four questions (`#faq`), the form.
 - `sovereignty.html` - the layer table, three questions, what the gateway routes
   abroad and what it does not, the open-source stack. Its hero is its only
   image; the control-room vignette that used to sit beside "Souverän heisst
@@ -157,7 +158,8 @@ still assumed it was on GitHub Pages:
   `<div lang="...">`. The `<h1>` names all three ("Seite nicht gefunden · Page
   not found · Page introuvable") so no language is privileged in the prose.
 - Header, footer and nav labels stay German, matching `x-default`. There is no
-  form, so it does not load `contact-form.js`. It uses
+  form, so it loads neither `contact-form.js` nor the Google tag - a 404 is not
+  a landing page and has no conversion to count. It uses
   `keera-coding-on-a-laptop.webp` and adds no CSS of its own.
 
 ## Languages
@@ -420,13 +422,32 @@ link to the story. The refusal of the climate-neutral claim
 has to survive any rewrite, there and in the story's _what we do not claim_
 section.
 
-## The gateway FAQ
+## The two FAQs
 
-`#faq` sits between `#features` and the form on the three `gateway.html`
-copies, and nowhere else. Eight questions, each a `<details>` the visitor
-opens: a heading, one sentence of framing, then the list in a `.faq`. It is the
-one section that answers a question instead of making a claim, which is why it
-is the last thing before the form.
+`#faq` is the last section before the form on the three `gateway.html` copies
+and the three `code.html` copies, and nowhere else. Each question is a
+`<details>` the visitor opens: a heading, one sentence of framing, then the
+list in a `.faq`. It is the one section that answers a question instead of
+making a claim, which is why it is the last thing before the form. The gateway
+asks eight, in a plain `.band` after `#features`; Keera Code asks four, in a
+`.band--alt` after the pair-programming split, which is what keeps that page's
+bands alternating down to the form.
+
+`<details>` is the second disclosure on the site after the story transcripts and
+needs no JavaScript, so neither FAQ adds a script of its own. It keeps its
+native marker: the icon set is closed at eight glyphs and a disclosure triangle
+is not a ninth. The questions are plain `<summary>` text rather than headings
+inside one - the outline gains little and screen readers announce the nesting
+badly - so the JSON-LD is what carries the Q&A to a crawler.
+
+Both sets are mirrored in a `FAQPage` node in their page's JSON-LD `@graph`, and
+**that copy is duplicated prose**: edit an answer in the markup and the `@graph`
+still says the old thing. Regenerate it from the markup rather than retyping it,
+and remember the `<script>` decodes no entities - the French node carries
+literal U+00A0 characters where the prose writes `&nbsp;`, exactly as the French
+`description` does.
+
+### The gateway's eight
 
 The order is the argument, and it is not the order the questions arrive in.
 Privacy, security and the AI Act come first because the banking, insurance and
@@ -459,19 +480,32 @@ support from us, and no client or library of its own, so the customer stays
 independent "of us as well". Do not rewrite it into a feature comparison
 against a named competitor.
 
-`<details>` is the second disclosure on the site after the story transcripts and
-needs no JavaScript, so the site still ships one script. It keeps its native
-marker: the icon set is closed at eight glyphs and a disclosure triangle is not
-a ninth. The questions are plain `<summary>` text rather than headings inside
-one - the outline gains little and screen readers announce the nesting badly -
-so the JSON-LD below is what carries the Q&A to a crawler.
+### Keera Code's four
 
-The eight are mirrored in a `FAQPage` node in each page's JSON-LD `@graph`, and
-**that copy is duplicated prose**: edit an answer in the markup and the `@graph`
-still says the old thing. Regenerate it from the markup rather than retyping it,
-and remember the `<script>` decodes no entities - the French node carries
-literal U+00A0 characters where the prose writes `&nbsp;`, exactly as the French
-`description` does.
+Same shape, same rule about the JSON-LD, and the same ordering logic read for a
+different buyer. What the regulated reader is buying comes first - where the
+code goes - then the two that decide adoption, then the coda that hands the
+reader to the other product and to the form.
+
+Two answers are load-bearing:
+
+- **The perimeter answer keeps the gateway's line between content and record.**
+  The code and the model's answer are not stored and nothing is trained on
+  them; the request - who, when, which model, how many tokens - is, in the
+  customer's own log. Writing "nothing is logged" would contradict
+  `gateway.html` two clicks away, and both pages have to survive being read in
+  one sitting.
+- **The open-weight answer concedes the benchmark.** On the hardest reasoning
+  the large proprietary models are still ahead, and the answer says so before
+  pointing at the hosted providers `#models` already describes as blocked by
+  default. The claim the page makes is that the customer keeps the choice, not
+  that open weights win everywhere - the same refusal as the story's _what we
+  do not claim_.
+
+Two questions were drafted here and cut: whether the agent can change code
+without being read, and whether the weights can be kept. The second is the
+Apache-2.0 sentence under `#models`, one section up, and asking it again as a
+question only made the page repeat itself.
 
 ## Models
 
@@ -540,7 +574,10 @@ visitor can untick.
 never leaves the page, then hides `[data-cf-fields]` and prints the confirmation
 into `[data-cf-status]`. All four messages - sending, sent, failed, and "pick a
 product" - come from `data-cf-*` attributes on the `<form>`, so one file serves
-all nine pages in all three languages. The status line's colour comes from the
+all nine pages in all three languages. A response Formspree accepts is the
+moment the lead exists, so that branch - and nothing else - calls
+`gtag_report_conversion()`, guarded by a `typeof` check so a blocked or absent
+tag cannot break the form. The status line's colour comes from the
 classes the handler sets (`is-shown` plus `is-ok` or `is-error`), not from an
 inline `style`, so it follows the colour scheme. "At least one product" is the only rule
 it checks itself; everything else is native constraint validation.
@@ -639,9 +676,25 @@ resolves `#contact` against a target that already exists.
 
 - `assets/css/keera.css` - the stylesheet. One file, no imports.
 - `assets/js/contact-form.js` - the form handler, loaded `defer` by the nine
-  pages with a form. Nothing else on the site runs JavaScript, and no page needs
-  a runtime: the React/`dc-runtime.js` era cost every page ~210 KB before
-  anything was visible.
+  pages with a form.
+- `assets/js/google-tag.js` - the Google Ads tag `AW-18327942303`: the
+  `dataLayer` bootstrap, the `config` call and Google's own
+  `gtag_report_conversion` helper. Loaded `defer` by all eighteen content pages,
+  last in the head, and it is the only tag they carry. It sits on every page
+  rather than only the nine with a form because an ad click lands wherever the
+  ad points and the click id must be recorded there for the conversion to be
+  attributed. This is the site's only third-party request and its only cookie;
+  it has no consent gate, which is a decision someone made and not an oversight
+  to fix in passing. **The file fetches gtag.js itself, on `load`** - Google's
+  snippet puts an `async` `<script>` for it in the head, which spends a
+  third-party handshake and ~120 KB while the hero image is still coming down.
+  Moving that tag down the markup would not have helped, because the preload
+  scanner finds it wherever it sits; appending it on `load` is what puts it
+  after the paint. Nothing is lost - the `js` and `config` calls queue on
+  `dataLayer` and gtag.js replays the queue when it arrives. Do not restore the
+  markup tag. Nothing else on the site runs JavaScript, and no page needs a
+  runtime: the React/`dc-runtime.js` era cost every page ~210 KB before anything
+  was visible.
 - `assets/fonts/` - JetBrains Mono and Space Grotesk woff2 subsets, `latin` and
   `latin-ext` only. Every head preloads the two `latin` cuts
   (`<link rel="preload" as="font" type="font/woff2" crossorigin>`, after the
@@ -697,8 +750,8 @@ directory and what inbound links point to. Internal links match: `href="./"` for
 of the current language.
 
 The JSON-LD is one `@graph` per page: `Organization` + `WebSite` on the three
-home pages, `BreadcrumbList` on the subpages, plus a `SoftwareApplication` on
-`code.html` and `gateway.html`, and a `FAQPage` on `gateway.html` alone.
+home pages, `BreadcrumbList` on the subpages, plus a `SoftwareApplication` and a
+`FAQPage` on both `code.html` and `gateway.html`.
 
 Keera itself still has no social or directory profiles, so its `Organization`
 carries no `sameAs`; the `parentOrganization` node points at bespinian's, which

@@ -1,7 +1,8 @@
 /* The #contact form posts to Formspree over fetch, so submitting never leaves
    the page. The handler is delegated off the document, and every message it
    prints comes from the data-cf-* attributes on the form itself - so one file
-   serves all nine pages that carry a form, in all three languages. */
+   serves all nine pages that carry a form, in all three languages. A submission
+   Formspree accepts is the lead-generation conversion Google Ads counts. */
 (function () {
   var SEL = "form[data-contact-form]";
 
@@ -43,6 +44,11 @@
         if (fields) fields.style.display = "none";
         say(form, "sent", true);
         form.reset();
+        /* The lead exists only once Formspree has taken it, so this is the
+           one place the Google Ads conversion may fire. Guarded, because the
+           form has to keep working when the tag is blocked or absent. */
+        if (typeof gtag_report_conversion === "function")
+          gtag_report_conversion();
       })
       .catch(function () {
         if (btn) btn.disabled = false;
