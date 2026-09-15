@@ -87,14 +87,18 @@ the home page. Keep new lists in that order.
   `#security` and `#features` are the same page twice at two altitudes and have
   to stay that way round: `#security` is what the endpoint decides for the
   business, `#features` is what the product is made of - guardrails, smart
-  filters, smart routers, the live map, sessions, SSO and roles, one `.card`
-  each in a `.grid` on a `band--alt`. It is the one six-card section on the
-  site, which is why it is also the one that gets no second sentence of framing:
-  three or four cards is the rule everywhere else. The six names are the
-  gateway's own, so a card renamed here is a screen renamed in the product;
-  check the gateway repo before rewording one. No icons - the set is closed at
-  eight glyphs per language. `#faq` is the last word before the form and the
-  one section that answers rather than asserts - see below.
+  filters, smart routers, the live map, agent sandboxes, SSO and roles, one
+  `.card` each in a `.grid` on a `band--alt`. The sandbox card replaced a
+  Sessions one and did not join it: seven cards would leave a lone card
+  stretched across the last row of a three-column grid, and sessions are still
+  sold one section up, by `#web-ui` and by the screen it shows. It is the one
+  six-card section on the site, which is why it is also the one that gets no
+  second sentence of framing: three or four cards is the rule everywhere else.
+  The six names are the gateway's own, so a card renamed here is a screen
+  renamed in the product; check the gateway repo before rewording one. No
+  icons - the set is closed at eight glyphs per language. `#faq` is the last
+  word before the form and the one section that answers rather than asserts -
+  see below.
 - `code.html` - Keera Code: hero, what it is as a four-layer stack (`#what`),
   the model table, where it plugs in (beside the pair-programming
   illustration), the four questions (`#faq`), the form.
