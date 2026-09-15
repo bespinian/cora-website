@@ -178,6 +178,17 @@ links in `<head>` (`de`, `fr`, `en`, `x-default`); `x-default` points at the
 German page. `<html lang>` is `de-CH` at the root, `en` under `en/` and `fr`
 under `fr/`.
 
+Which of the three a visitor lands in is negotiated in `.htaccess`, on the home
+page only: `Accept-Language` starting with `fr` gets a 302 to `/fr/`, `de` or
+`gsw` stays on the German root, anything else goes to `/en/`. Matching is on the
+first tag only and stops at its separator, so `de-CH` and `fr-CH` need no rules
+of their own. Two things deliberately do *not* redirect - a request with no
+`Accept-Language` at all, which is what a crawler sends and which should see the
+German root that `x-default` names, and a request whose referrer is this site,
+so that clicking DE in the switcher is not bounced straight back by the header.
+Subpages never negotiate: a deep link stays on the page and language it names.
+The entry point answers `Vary: Accept-Language` accordingly.
+
 Adding or editing a page means touching all three copies. Beyond the prose, only
 two things differ: asset URLs are `../assets/...` one directory up, and the
 switcher points at `../<page>.html` and `../<other>/<page>.html` instead of

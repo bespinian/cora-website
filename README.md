@@ -11,8 +11,9 @@ and three shared files under `assets/`:
 `robots.txt`, `sitemap.xml` and `.htaccess` sit beside them at the root.
 `.htaccess` is the only place a response status, a redirect or a cache lifetime
 can be set on this host: it wires up `ErrorDocument 404 /404.html`, turns off
-directory listings, collapses http/www onto `https://keera.ch`, and sets the
-cache lifetimes.
+directory listings, collapses http/www onto `https://keera.ch`, sends the home
+page to the language the visitor's browser asks for, and sets the cache
+lifetimes.
 
 Edit the HTML by hand. A change to a page's shell - header, footer, contact
 form, metadata - has to be made in all three language copies; `AGENTS.md` has

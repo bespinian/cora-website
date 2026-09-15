@@ -32,6 +32,52 @@ Options -Indexes
 
   RewriteCond %{HTTP_HOST} ^www\.keera\.ch$ [NC]
   RewriteRule ^ https://keera.ch%{REQUEST_URI} [R=301,L]
+
+  # --- Language on the way in -------------------------------------------
+  # The three languages are three directory trees - German at the root,
+  # en/ and fr/ - and nothing but the DE/FR/EN switcher ever pointed a
+  # visitor at the right one. Someone arriving from a search result or a
+  # shared link got German whatever their browser asked for. These rules
+  # negotiate the entry point: French browsers to /fr/, German ones to the
+  # German root they already landed on, everyone else to /en/.
+  #
+  # Only the home page negotiates. A deep link to /gateway.html stays on the
+  # page it names, in the language it names - that URL is indexed, hreflang
+  # already tells Google about the other two, and silently swapping the page
+  # out from under an inbound link is worse than leaving it alone.
+  #
+  # Matching is on the *first* tag of Accept-Language, which is the one the
+  # browser ranks highest; the q-values behind it are not worth parsing here.
+  # The tag is matched up to its separator, so the Swiss variants come along
+  # for free - de-CH and fr-CH match de and fr, and so do de_CH, fr-FR, or a
+  # bare de followed by a comma or a semicolon. gsw is Swiss German, which a
+  # handful of Android builds send ahead of de-CH. frr (Frisian) and the like
+  # are kept out by requiring that separator.
+  #
+  # Both rules skip a request that came from this site, by referrer: without
+  # that, a French-speaking visitor who clicks DE in the switcher lands on /
+  # and is bounced straight back to /fr/, and the German home page is not
+  # reachable for them at all. Internal navigation therefore always wins over
+  # the header - the switcher is an explicit choice, Accept-Language is a
+  # guess. (A visitor whose browser sends no referrer at all loses that, and
+  # has to reach German through a subpage. The alternative is a preference
+  # cookie, which needs JavaScript on all eighteen pages to set it.)
+  #
+  # Redirects are to the absolute https:// URL on purpose. Apache sees plain
+  # HTTP here (see above), so a relative target would be expanded to
+  # http://keera.ch/... and either cost a second redirect or downgrade the
+  # connection outright.
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?keera\.ch(/|$) [NC]
+  RewriteCond %{HTTP:Accept-Language} ^\s*fr([-_,;]|$) [NC]
+  RewriteRule ^(index\.html)?$ https://keera.ch/fr/ [R=302,L]
+
+  # Anything that is not German - and not nothing. An empty or absent
+  # Accept-Language is what a crawler sends: Googlebot gets the German root,
+  # which is what x-default points at, rather than a redirect to /en/.
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?keera\.ch(/|$) [NC]
+  RewriteCond %{HTTP:Accept-Language} .
+  RewriteCond %{HTTP:Accept-Language} !^\s*(de|gsw)([-_,;]|$) [NC]
+  RewriteRule ^(index\.html)?$ https://keera.ch/en/ [R=302,L]
 </IfModule>
 
 # --- Cache lifetimes -----------------------------------------------------
@@ -42,6 +88,15 @@ Options -Indexes
 # mod_expires, so the <IfModule> guard skipped the whole thing silently.
 # mod_headers is loaded, and matches on filename rather than MIME type.
 <IfModule mod_headers.c>
+  # The home page answers differently depending on Accept-Language - German,
+  # or a 302 to /fr/ or /en/ - so every cache between here and the reader has
+  # to key on that header too. `always` is what puts it on the redirect as
+  # well as on the German page; the plain table only covers 2xx.
+  <IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "^/(index\.html)?$" KEERA_LANG_NEG=1
+    Header always append Vary "Accept-Language" env=KEERA_LANG_NEG
+  </IfModule>
+
   # A year, and immutable, because deploy stamps every asset URL with
   # ?v=<content hash> (.github/scripts/fingerprint-assets.py). A query string
   # is part of the cache key, so replacing an illustration in place under the
